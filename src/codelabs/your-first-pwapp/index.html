@@ -1,45 +1,7 @@
-<!doctype html>
+<google-codelab title="My test codelab"
+                environment="web"
+                feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
 
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <meta name="theme-color" content="#dd4814">
-  <meta charset="UTF-8">
-  <title>My test codelab</title>
-  <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-  <link rel="import" href="../../../bower_components/codelab-components/google-codelab-elements.html">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Ubuntu:400,300,400italic,500,700|Ubuntu+Mono">
-  <style>
-    body {
-      font-family: "Ubuntu",sans-serif;
-    }
-  </style>
-
-  <style is="custom-style">
-    :root {
-      --primary-color: #dd4814;
-      --google-codelab-header-background: var(--primary-color);
-      --google-codelab-fab-background: var(--primary-color);
-
-      
-      --paper-blue-500: var(--primary-color);;
-    };
-
-    google-codelab-step {
-      --google-codelab-step-code: {
-        font-family: 'Ubuntu Mono',Helvetica,Arial;
-      };
-    };
-</style>
-
-  
-</head>
-<body unresolved class="fullbleed">
-
-  <google-codelab title="My test codelab"
-                  environment="web"
-                  feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
-    
       <google-codelab-step label="Introduction" duration="0">
         <p><a href="https://developers.google.com/web/progressive-web-apps" target="_blank">Progressive Web Apps</a> are experiences that combine the best of the web and the best of apps. They are useful to users from the very first visit in a browser tab, no install required. As the user progressively builds a relationship with the app over time, it becomes more and more powerful. It loads quickly, even on flaky networks, sends relevant push notifications, has an icon on the home screen, and loads as a top-level, full screen experience.</p>
 <h2>What is a Progressive Web App?</h2>
@@ -100,7 +62,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Getting set up" duration="12">
         <h2>Download the Code</h2>
 <p>You can download all of the code for this codelab, by clicking the following button:</p>
@@ -131,7 +93,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Architect your App Shell" duration="0">
         <h2>What is the app shell?</h2>
 <p>The app&#39;s shell is the minimal HTML, CSS, and JavaScript that is required to power the user interface of a progressive web app and is one of the components that ensures reliably good performance. Its first load should be extremely quick and immediately cached. &#34;Cached&#34; means that the shell files are loaded once over the network and then saved to the local device. Every subsequent time that the user opens the app, the shell files are loaded from the local device&#39;s cache, which results in blazing-fast startup times. </p>
@@ -164,7 +126,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Implement your App Shell" duration="0">
         <p>There are multiple ways to get started with any project, and we generally recommend using Web Starter Kit. But, in this case, to keep our project as simple as possible and concentrate on Progressive Web Apps, we&#39;ve provided you with all of the resources you&#39;ll need.</p>
 <aside class="special"><p><strong>Learn more</strong> about <a href="https://developers.google.com/web/tools/starter-kit/" target="_blank">Web Starter Kit</a></p>
@@ -249,7 +211,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Start with a fast first load" duration="0">
         <p>Progressive Web Apps should start fast and be usable immediately. In its current state, our Weather App starts quickly, but it&#39;s not useable. There&#39;s no data. We could make an AJAX request to get that data, but that results in an extra request and makes the initial load longer. Instead, provide real data in the first load.</p>
 <h2>Inject the weather forecast data</h2>
@@ -329,7 +291,7 @@
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Use service workers to pre-cache the App Shell" duration="0">
         <p>Progressive Web Apps have to be fast, and installable, which means that they work online, offline, and on intermittent, slow connections. To achieve this, we need to cache our app shell using service worker, so that it&#39;s always available quickly and reliably.</p>
 <p>If you&#39;re unfamiliar with service workers, you can get a basic understanding by reading <a href="https://developers.google.com/web/fundamentals/primers/service-worker/" target="_blank">Introduction To Service Workers</a> about what they can do, how their lifecycle works and more.</p>
@@ -460,7 +422,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Use service workers to cache the forecast data" duration="0">
         <p>Choosing the right <a href="https://jakearchibald.com/2014/offline-cookbook/" target="_blank">caching strategy</a> for your data is vital and depends on the type of data your app presents. For example, time-sensitive data like weather or stock quotes should be as fresh as possible, while avatar images or article content can be updated less frequently.</p>
 <p>The <a href="https://jakearchibald.com/2014/offline-cookbook/#cache-network-race" target="_blank">cache-first-then-network</a> strategy is ideal for our app. It gets data on screen as quickly as possible, then updates that once the network has returned the latest data. In comparison to network-first-then-cache, the user does not have to wait until the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">fetch</a> times out to get the cached data.</p>
@@ -549,7 +511,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Support native integration" duration="0">
         <p>Nobody likes to have to type in long URLs on a mobile keyboard if they don&#39;t need to. With the Add To home screen feature, your users can choose to add a shortcut link to their device just as they would install a native app from a store, but with a lot less friction.</p>
 <h2>Web App Install Banners and Add to Homescreen for Chrome on Android</h2>
@@ -638,7 +600,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 
 
       </google-codelab-step>
-    
+
       <google-codelab-step label="Deploy to a secure host and celebrate" duration="0">
         <p>The final step is to deploy our weather app to a server that supports HTTPS. If you don&#39;t already have one, the absolute easiest (and free) approach is to use the static content hosting from Firebase. It&#39;s super easy to use, serves content over HTTPS and is backed by a global CDN.</p>
 <h2>Extra credit: minify and inline CSS</h2>
@@ -670,7 +632,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 
 
       </google-codelab-step>
-    
+
   </google-codelab>
 
   <script>
@@ -700,6 +662,3 @@ self.addEventListener(&#39;install&#39;, function(e) {
       }
     })();
   </script>
-
-</body>
-</html>
