@@ -70,13 +70,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.codelab = codelab;
         // load codelab import on demand.
         var link = this.importHref(
-          this.resolveUrl("codelabs/" + codelab + '/index.html'),
+          this.resolveUrl("codelabs/" + codelab + '/index.ubuntu-template.html'),
           function() {
-            // FIXME: create elements themselves instead (inside codelabs templates?), only import if link isn't null
-              if (link) {
-                  Polymer.dom(this.$.content).appendChild(link.import.body);
-              }
-            }, null, true);
+            if (link) {
+              var dynamicEl = document.createElement(codelab);
+              Polymer.dom(this.$.content).appendChild(dynamicEl);
+            }
+          }, null, true);
       }
 
     });
