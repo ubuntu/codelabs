@@ -1,6 +1,31 @@
-<google-codelab title="My test codelab"
-                environment="web"
-                feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/codelab-components/google-codelab-elements.html">
+
+<dom-module id="your-first-pwapp">
+
+<template>
+
+  <style>
+    :root {
+      --google-codelab-header-background: var(--app-primary-color);
+      --google-codelab-fab-background: var(--app-primary-color);
+
+
+      --paper-blue-500: var(--app-primary-color);;
+    };
+
+    google-codelab-step {
+      --google-codelab-step-code: {
+        font-family: 'Ubuntu Mono',Helvetica,Arial;
+      };
+    };
+  </style>
+
+
+  <google-codelab title="My test codelab"
+                  environment="web"
+                  feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
 
       <google-codelab-step label="Introduction" duration="0">
         <p><a href="https://developers.google.com/web/progressive-web-apps" target="_blank">Progressive Web Apps</a> are experiences that combine the best of the web and the best of apps. They are useful to users from the very first visit in a browser tab, no install required. As the user progressively builds a relationship with the app over time, it becomes more and more powerful. It loads quickly, even on flaky networks, sends relevant push notifications, has an icon on the home screen, and loads as a top-level, full screen experience.</p>
@@ -635,6 +660,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 
   </google-codelab>
 
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -662,3 +688,17 @@ self.addEventListener(&#39;install&#39;, function(e) {
       }
     })();
   </script>
+
+</template>
+
+<script>
+
+  Polymer({
+
+    is: 'your-first-pwapp',
+
+  });
+
+</script>
+
+</dom-module>
