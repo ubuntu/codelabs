@@ -10,7 +10,8 @@
       pattern="/:codelab"
       data="{{routeData}}"></app-route>
 
-      <div id="content"></div>
+      <iron-pages id="codelabwrapper" role="main" selected="[[codelab]]" attr-for-selected="name">
+      </iron-pages>
 
   </template>
 
@@ -46,7 +47,8 @@
           function() {
             if (link) {
               var dynamicEl = document.createElement(codelab);
-              Polymer.dom(this.$.content).appendChild(dynamicEl);
+              dynamicEl.setAttribute("name", codelab);
+              Polymer.dom(this.$.codelabwrapper).appendChild(dynamicEl);
             }
           }, null, true);
       }
