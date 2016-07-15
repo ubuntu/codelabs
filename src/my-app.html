@@ -37,6 +37,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--app-primary-color);
         color: #fff;
       }
+      app-header.hidden {
+        display: none;
+      }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
@@ -79,13 +82,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="view2" href="/view2">View Two</a>
           <a name="view3" href="/view3">View Three</a>
           <a name="codelabs/your-first-pwapp" href="/codelabs/your-first-pwapp">First codelab</a>
+          <a name="codelabs/your-second-pwapp" href="/codelabs/your-second-pwapp">Second codelab</a>
         </iron-selector>
       </app-drawer>
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
-        <app-header condenses reveals effects="waterfall">
+        <app-header id="header" class$="{{_isMainHeaderHidden(page)}}" reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div title>My App</div>
@@ -133,7 +137,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // load page import on demand.
         this.importHref(
           this.resolveUrl(page + '.html'), null, null, true);
-      }
+      },
+
+      _isMainHeaderHidden: function(page) {
+        if (page === "codelabs") {
+          return "hidden";
+        }
+        // as we will make the header reappar, trigger a relayout
+        this.$.header.notifyResize();
+        return "";
+      },
 
     });
 
