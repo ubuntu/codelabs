@@ -44,24 +44,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-icon-button-ink-color: white;
       }
 
-      .drawer-list {
-        margin: 0 20px;
-      }
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        line-height: 40px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-      }
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
-      }
-      .drawer-list a.subroute {
-        padding-left: 32px;
-      }
-
 
     </style>
 
@@ -72,21 +54,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
+    <!-- TODO: understanding why we need to encapsulate it (for codelab pages inside an app-drawer-layout) -->
     <app-drawer-layout fullbleed>
 
-      <!-- Drawer content -->
-      <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-          <a name="codelabs/your-first-pwapp" href="/codelabs/your-first-pwapp">First codelab</a>
-          <a name="codelabs/your-second-pwapp" href="/codelabs/your-second-pwapp">Second codelab</a>
-        </iron-selector>
-      </app-drawer>
-
-      <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
         <app-header id="header" class$="{{_isMainHeaderHidden(page)}}" reveals effects="waterfall">
