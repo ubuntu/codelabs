@@ -18,7 +18,9 @@
     </style>
 
     <template is="dom-repeat" items="[[codelabs]]">
-      <codelab-card></codelab-card>
+      <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
+                    difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
+                    updated="[[item.updated]]" url="[[item.url]]"></codelab-card>
     </template>
 
   </template>
@@ -35,10 +37,10 @@
             value: function() {
               return [
                 { title: "My snappy test codelab",
-                  summary: "In this codelab, you'll build a first snap, which will enables you to get started with this snappy world…",
+                  summary: "In this codelab, you'll build a first snap, which will enables you to get started with this snappy world",
                   theme: "snap",
-                  difficulty: "1",
-                  duration: "10",
+                  difficulty: 1,
+                  duration: 10,
                   tags: [
                     "snapcraft",
                     "snappy",
@@ -49,8 +51,8 @@
                 { title: "My juju test codelab",
                   summary: "In this codelab, you'll build a complex juju charm",
                   theme: "juju",
-                  difficulty: "4",
-                  duration: "45",
+                  difficulty: 4,
+                  duration: 45,
                   tags: [
                     "charming",
                     "juju",

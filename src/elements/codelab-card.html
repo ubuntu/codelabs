@@ -26,12 +26,16 @@
         font-size: 15px;
         vertical-align: middle;
       }
-      iron-icon.star {
+
+      .star {
         --iron-icon-width: 16px;
         --iron-icon-height: 16px;
         color: var(--paper-amber-500);
       }
-      iron-icon.star:last-of-type { color: var(--paper-grey-500); }
+      .star-empty {
+        color: var(--paper-grey-500);
+      }
+
       a {
         text-decoration: none;
       }
@@ -42,24 +46,25 @@
 
     <paper-card>
       <div class="card-content">
-        <div class="category">snap</div>
-        <div class="codelab-header">My first codelab
+        <div class="category">[[theme]]</div>
+        <div class="codelab-header">[[title]]
           <div class="codelab-duration codelab-light">
             <iron-icon icon="device:access-time"></iron-icon>
-            <span>10min</span>
+            <span>[[duration]]min</span>
           </div>
         </div>
-        <p class="codelab-light">This codelab is going fdsfdsfds fdsfsd fdsfds to improve your life by a 10x factor!</p>
+        <p class="codelab-light">[[summary]]</p>
         <div>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
-          <iron-icon class="star" icon="star"></iron-icon>
+          <template is="dom-repeat" items="[[_computeFullStars(difficulty)]]">
+            <iron-icon class="star" icon="star"></iron-icon>
+          </template>
+          <template is="dom-repeat" items="[[_computeEmptyStars(difficulty)]]">
+            <iron-icon class="star star-empty" icon="star"></iron-icon>
+          </template>
         </div>
       </div>
       <div class="card-actions horizontal end-justified layout">
-        <a href="../codelabs/your-first-pwapp" tabindex="-1">
+        <a href="/codelabs/[[url]]" tabindex="-1">
           <paper-button class="codelab-start-action" raised>Start this codelab</paper-button>
         </a>
       </div>
@@ -73,6 +78,8 @@
 
       is: 'codelab-card',
 
+      MAX_DIFFICULTY: 5,
+
       properties: {
         title: String,
         summary: String,
@@ -82,6 +89,14 @@
         tags: Array,
         updated: String,
         url: String,
+      },
+
+      _computeFullStars: function(count) {
+        return new Array(count);
+      },
+
+      _computeEmptyStars: function(count) {
+        return new Array(this.MAX_DIFFICULTY - count);
       },
 
     });
