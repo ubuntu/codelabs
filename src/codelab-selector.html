@@ -1,71 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/iron-icons/device-icons.html">
-<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="elements/codelab-card.html">
 
 <dom-module id="codelab-selector">
 
   <template>
 
-    <style include="iron-flex iron-flex-alignment">
+    <style>
       :host {
         display: block;
         padding: 10px;
       }
-
-      paper-card {
+      codelab-card {
         margin: 10px;
         max-width: 400px;
-        --paper-card-background-color: var(--paper-orange-700);
-      }
-      .codelab-header { @apply(--paper-font-headline); }
-      .codelab-light { color: white; }
-      .codelab-duration {
-        float: right;
-        font-size: 15px;
-        vertical-align: middle;
-      }
-      iron-icon.star {
-        --iron-icon-width: 16px;
-        --iron-icon-height: 16px;
-        color: var(--paper-amber-500);
-      }
-      iron-icon.star:last-of-type { color: var(--paper-grey-500); }
-      a {
-        text-decoration: none;
-      }
-      .codelab-start-action {
-        color: white;
       }
     </style>
 
     <template is="dom-repeat" items="[[codelabs]]">
-      <paper-card>
-        <div class="card-content">
-          <div class="codelab-header">My first codelab
-            <div class="codelab-duration codelab-light">
-              <iron-icon icon="device:access-time"></iron-icon>
-              <span>10min</span>
-            </div>
-          </div>
-          <p class="codelab-light">This codelab is going fdsfdsfds fdsfsd fdsfds to improve your life by a 10x factor!</p>
-          <div>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-            <iron-icon class="star" icon="star"></iron-icon>
-          </div>
-        </div>
-        <div class="card-actions horizontal end-justified layout">
-          <a href="../codelabs/your-first-pwapp" tabindex="-1">
-            <paper-button class="codelab-start-action" raised>Start this codelab</paper-button>
-          </a>
-        </div>
-      </paper-card>
+      <codelab-card></codelab-card>
     </template>
 
   </template>
