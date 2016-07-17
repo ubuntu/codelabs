@@ -3,15 +3,21 @@
 <script>
   Polymer.ColorByThemeBehaviorImpl = {
 
-    _color_by_theme: function(theme) {
-      switch (theme) {
-        case "snap":
-          return 'var(--paper-orange-600)';
-          case "juju":
-            return 'var(--paper-green-600)';
-        default:
-          return 'white';
+    properties: {
+      themesmap: {
+        type: Object,
+        value: function() {
+          return {}
+        },
+      },
+    },
+
+    _color_by_theme: function(theme, themesmap) {
+      var color = themesmap[theme];
+      if (!color) {
+        color = 'white';
       }
+      return color;
     },
 
   };

@@ -127,8 +127,7 @@
       },
 
       _themeChanged: function(theme) {
-        console.log(theme);
-        this.customStyle['--theme-color'] = this._color_by_theme(theme);
+        this.customStyle['--theme-color'] = this._color_by_theme(theme, this.themesmap);
         this.updateStyles();
       },
 
