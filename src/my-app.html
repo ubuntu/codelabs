@@ -11,7 +11,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
@@ -54,15 +53,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <!-- TODO: understanding why we need to encapsulate it (for codelab pages inside an app-drawer-layout) -->
-    <app-drawer-layout fullbleed>
+      <app-header-layout>
 
-      <app-header-layout has-scrolling-region>
-
-        <app-header id="header" class$="{{_isMainHeaderHidden(page)}}" reveals effects="waterfall">
+        <app-header id="header" class$="{{_isMainHeaderHidden(page)}}" condenses fixed effects="material">
           <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>My App</div>
+            <h4 condensed-title>Ubuntu codelabs</h4>
+          </app-toolbar>
+          <app-toolbar>
+            <h1 title>Ubuntu codelabs</h1>
           </app-toolbar>
         </app-header>
 
@@ -73,9 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <my-codelabs name="codelabs" route="[[subroute]]"></my-codelabs>
         </iron-pages>
 
-      </app-header-layout>
-
-    </app-drawer-layout>
+    </app-header-layout>
 
   </template>
 
