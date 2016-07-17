@@ -19,8 +19,11 @@
       }
 
       paper-card {
-        background-color: var(--theme-color);
         height: 100%;
+      }
+
+      .themed {
+        background-color: var(--theme-color);
       }
 
       .header {
@@ -48,6 +51,10 @@
         color: var(--paper-grey-500);
       }
 
+      .card-actions {
+        margin-top: 5px;
+      }
+
       a {
         text-decoration: none;
       }
@@ -62,7 +69,7 @@
     </style>
 
     <paper-card class="vertical layout">
-      <div class="card-content">
+      <div class="card-content themed">
         <div class="horizontal end-justified layout">
           <div class="category">[[theme]]</div>
         </div>
@@ -82,7 +89,7 @@
           </template>
         </div>
       </div>
-      <div class="flex"></div>
+      <div class="themed flex"></div>
       <div class="card-actions horizontal end-justified layout">
         <a href="/codelabs/[[url]]" tabindex="-1">
           <paper-button class="start-action" raised>Start this codelab</paper-button>
