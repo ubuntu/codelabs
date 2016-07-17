@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="elements/codelab-card.html">
 
@@ -6,7 +7,7 @@
 
   <template>
 
-    <style>
+    <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
         padding: 10px;
@@ -17,11 +18,13 @@
       }
     </style>
 
-    <template is="dom-repeat" items="[[codelabs]]">
-      <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
-                    difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
-                    updated="[[item.updated]]" url="[[item.url]]"></codelab-card>
-    </template>
+    <div class="horizontal layout">
+      <template is="dom-repeat" items="[[codelabs]]">
+        <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
+                      difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
+                      updated="[[item.updated]]" url="[[item.url]]"></codelab-card>
+      </template>
+    </div>
 
   </template>
 
