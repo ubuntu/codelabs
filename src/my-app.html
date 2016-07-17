@@ -65,9 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
+          <codelab-selector name="codelab-selector"></codelab-selector>
           <my-codelabs name="codelabs" route="[[subroute]]"></my-codelabs>
         </iron-pages>
 
@@ -96,7 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'codelab-selector';
       },
 
       _pageChanged: function(page) {
