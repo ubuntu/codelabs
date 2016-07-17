@@ -23,6 +23,7 @@
       }
 
       .header {
+        margin-top: 10px;
         @apply(--paper-font-headline);
         font-size: 20px;
       }
@@ -50,8 +51,12 @@
         text-decoration: none;
       }
 
-      .start-action {
+      paper-button {
         color: white;
+        background-color: var(--paper-orange-900);
+      }
+      paper-button:hover {
+        background-color: var(--paper-orange-400);
       }
     </style>
 
