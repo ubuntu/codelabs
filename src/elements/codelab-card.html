@@ -19,11 +19,18 @@
         background-color: var(--paper-orange-700);
       }
 
-      .codelab-header { @apply(--paper-font-headline); }
-      .codelab-light { color: white; }
-      .codelab-duration {
+      .header {
+        @apply(--paper-font-headline);
+        font-size: 20px;
+      }
+
+      .light {
+        color: white;
+      }
+
+      .duration {
         float: right;
-        font-size: 15px;
+        font-size: 20px;
         vertical-align: middle;
       }
 
@@ -39,21 +46,24 @@
       a {
         text-decoration: none;
       }
-      .codelab-start-action {
+
+      .start-action {
         color: white;
       }
     </style>
 
     <paper-card>
       <div class="card-content">
-        <div class="category">[[theme]]</div>
-        <div class="codelab-header">[[title]]
-          <div class="codelab-duration codelab-light">
+        <div class="horizontal end-justified layout">
+          <div class="category">[[theme]]</div>
+        </div>
+        <div class="header">[[title]]
+          <div class="duration light">
             <iron-icon icon="device:access-time"></iron-icon>
             <span>[[duration]]min</span>
           </div>
         </div>
-        <p class="codelab-light">[[summary]]</p>
+        <p class="light">[[summary]]</p>
         <div>
           <template is="dom-repeat" items="[[_computeFullStars(difficulty)]]">
             <iron-icon class="star" icon="star"></iron-icon>
@@ -65,7 +75,7 @@
       </div>
       <div class="card-actions horizontal end-justified layout">
         <a href="/codelabs/[[url]]" tabindex="-1">
-          <paper-button class="codelab-start-action" raised>Start this codelab</paper-button>
+          <paper-button class="start-action" raised>Start this codelab</paper-button>
         </a>
       </div>
     </paper-card>
