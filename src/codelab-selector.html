@@ -1,6 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 
 <link rel="import" href="elements/codelab-card.html">
 
@@ -19,19 +22,31 @@
       }
     </style>
 
-    <div class="horizontal layout wrap">
-      <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords)}}">
-        <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
-                      difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
-                      updated="[[item.updated]]" url="[[item.url]]"
-                      themesmap="[[themesmap]]"></codelab-card>
-      </template>
+    <div>
+      <div class="horizontal end-justified layout">
+        <div>selected: [[selectedcategory]]</div>
+        <paper-dropdown-menu label="Category" value="{{selectedcategory}}">
+          <paper-listbox class="dropdown-content" selected="0">
+            <template is="dom-repeat" items="[[categories]]">
+              <paper-item>[[item]]</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
+      </div>
+      <div class="horizontal layout wrap">
+        <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords, selectedcategory)}}">
+          <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
+                        difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
+                        updated="[[item.updated]]" url="[[item.url]]"
+                        themesmap="[[themesmap]]"></codelab-card>
+        </template>
 
-      <iron-ajax
-        auto
-        url="/api/codelabs.json"
-        handle-as="json"
-        on-response="_codelabsInfoHandler">
+        <iron-ajax
+          auto
+          url="/api/codelabs.json"
+          handle-as="json"
+          on-response="_codelabsInfoHandler">
+      </div>
     </div>
 
   </template>
@@ -60,19 +75,26 @@
               return [];
             },
           },
+          categories: {
+            type: Array,
+            computed: "_buildthemecategories(themesmap)",
+          }
         },
 
-        codelabfromscope: function(listofkeywords) {
+        codelabfromscope: function(listofkeywords, selectedcategory) {
           // return a filter function for the current search string
           return function(item) {
-            console.log(listofkeywords);
-            if (listofkeywords.length === 0)
-              return true;
             var returnvalue = false;
             var title = item.title.toLowerCase();
             var summary = item.summary.toLowerCase();
             var theme = item.theme.toLowerCase();
             var tags = item.tags;
+
+            if (selectedcategory !== theme && selectedcategory !== "All")
+              return false;
+            if (listofkeywords.length === 0)
+              return true;
+
             listofkeywords.forEach(function(searchterm) {
               if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
                   theme.indexOf(searchterm) !== -1) {
@@ -104,7 +126,13 @@
           this.currentSearch.split(" ").forEach(function(searchterm) {
             this.listofkeywords.push(searchterm.toLowerCase())
           }, this);
-        }
+        },
+
+        _buildthemecategories: function(themesmap) {
+          var newthemes = Object.keys(themesmap).sort();
+          newthemes.unshift("All");
+          return newthemes;
+        },
     });
 
   </script>

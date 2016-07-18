@@ -19,7 +19,9 @@
     "codelab-components": "https://github.com/googlecodelabs/codelab-components.git#^1.0.5",
     "paper-card": "PolymerElements/paper-card",
     "iron-ajax": "^1.4.0",
-    "paper-input": "^1.1.15"
+    "paper-input": "^1.1.15",
+    "paper-dropdown-menu": "^1.3.2",
+    "paper-listbox": "^1.1.2"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
