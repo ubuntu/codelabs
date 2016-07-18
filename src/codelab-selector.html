@@ -15,12 +15,11 @@
       }
       codelab-card {
         margin: 10px;
-        max-width: 400px;
+        max-width: 350px;
       }
     </style>
 
-
-    <div class="horizontal layout">
+    <div class="horizontal layout wrap">
       <template is="dom-repeat" items="[[codelabs]]">
         <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
                       difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
