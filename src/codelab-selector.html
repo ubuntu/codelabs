@@ -83,7 +83,6 @@
       codelabfromscope: function(listofkeywords, selectedcategory) {
         // return a filter function for the current search string
         return function(item) {
-          var returnvalue = false;
           var title = item.title.toLowerCase();
           var summary = item.summary.toLowerCase();
           var theme = item.theme.toLowerCase();
@@ -94,18 +93,21 @@
           if (listofkeywords.length === 0)
             return true;
 
+          var should_show = true;
           listofkeywords.forEach(function(searchterm) {
+            var searchterm_found = false;
             if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
                 theme.indexOf(searchterm) !== -1) {
-              returnvalue = true;
+              searchterm_found = true;
             }
             tags.forEach(function(tag) {
               if (tag.toLowerCase().indexOf(searchterm) !== -1) {
-                returnvalue = true;
+                searchterm_found = true;
               }
             }, this);
+            should_show = should_show && searchterm_found;
           }, this);
-          return returnvalue;
+          return should_show;
         };
       },
 
