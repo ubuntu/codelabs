@@ -57,82 +57,82 @@
 
       is: 'codelab-selector',
 
-        properties: {
-          codelabs: {
-            type: Array,
-            value: function() {
-              return [];
-            }
-          },
-          themesmap: Object,
-          currentSearch: {
-            type: String,
-            observer: '_updatekeywords',
-          },
-          listofkeywords: {
-            type: Array,
-            value: function() {
-              return [];
-            },
-          },
-          categories: {
-            type: Array,
-            computed: "_buildthemecategories(themesmap)",
+      properties: {
+        codelabs: {
+          type: Array,
+          value: function() {
+            return [];
           }
         },
+        themesmap: Object,
+        currentSearch: {
+          type: String,
+          observer: '_updatekeywords',
+        },
+        listofkeywords: {
+          type: Array,
+          value: function() {
+            return [];
+          },
+        },
+        categories: {
+          type: Array,
+          computed: "_buildthemecategories(themesmap)",
+        }
+      },
 
-        codelabfromscope: function(listofkeywords, selectedcategory) {
-          // return a filter function for the current search string
-          return function(item) {
-            var returnvalue = false;
-            var title = item.title.toLowerCase();
-            var summary = item.summary.toLowerCase();
-            var theme = item.theme.toLowerCase();
-            var tags = item.tags;
+      codelabfromscope: function(listofkeywords, selectedcategory) {
+        // return a filter function for the current search string
+        return function(item) {
+          var returnvalue = false;
+          var title = item.title.toLowerCase();
+          var summary = item.summary.toLowerCase();
+          var theme = item.theme.toLowerCase();
+          var tags = item.tags;
 
-            if (selectedcategory !== theme && selectedcategory !== "All")
-              return false;
-            if (listofkeywords.length === 0)
-              return true;
+          if (selectedcategory !== theme && selectedcategory !== "All")
+            return false;
+          if (listofkeywords.length === 0)
+            return true;
 
-            listofkeywords.forEach(function(searchterm) {
-              if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
-                  theme.indexOf(searchterm) !== -1) {
+          listofkeywords.forEach(function(searchterm) {
+            if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
+                theme.indexOf(searchterm) !== -1) {
+              returnvalue = true;
+            }
+            tags.forEach(function(tag) {
+              if (tag.toLowerCase().indexOf(searchterm) !== -1) {
                 returnvalue = true;
               }
-              tags.forEach(function(tag) {
-                if (tag.toLowerCase().indexOf(searchterm) !== -1) {
-                  returnvalue = true;
-                }
-              }, this);
             }, this);
-            return returnvalue;
-          };
-        },
-
-        _codelabsInfoHandler: function(event) {
-          this.themesmap = event.detail.response["themes"];
-          event.detail.response["codelabs"].forEach(function(codelab) {
-            this.push("codelabs", codelab);
           }, this);
-        },
+          return returnvalue;
+        };
+      },
 
-        _updatekeywords: function() {
-          // protect against uninitialized javascript
-          if (typeof this.listofkeywords === "undefined") {
-            return;
-          }
-          this.listofkeywords = [];
-          this.currentSearch.split(" ").forEach(function(searchterm) {
-            this.listofkeywords.push(searchterm.toLowerCase())
-          }, this);
-        },
+      _codelabsInfoHandler: function(event) {
+        this.themesmap = event.detail.response["themes"];
+        event.detail.response["codelabs"].forEach(function(codelab) {
+          this.push("codelabs", codelab);
+        }, this);
+      },
 
-        _buildthemecategories: function(themesmap) {
-          var newthemes = Object.keys(themesmap).sort();
-          newthemes.unshift("All");
-          return newthemes;
-        },
+      _updatekeywords: function() {
+        // protect against uninitialized javascript
+        if (typeof this.listofkeywords === "undefined") {
+          return;
+        }
+        this.listofkeywords = [];
+        this.currentSearch.split(" ").forEach(function(searchterm) {
+          this.listofkeywords.push(searchterm.toLowerCase())
+        }, this);
+      },
+
+      _buildthemecategories: function(themesmap) {
+        var newthemes = Object.keys(themesmap).sort();
+        newthemes.unshift("All");
+        return newthemes;
+      },
     });
 
   </script>
