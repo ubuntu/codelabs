@@ -18,7 +18,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 <dom-module id="my-app">
 
@@ -34,13 +35,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       app-header {
         background-color: var(--app-primary-color);
-        color: #fff;
+        color: white;
       }
       app-header.hidden {
         display: none;
       }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
+
+      paper-input {
+        --paper-input-container-focus-color: white;
+        --paper-input-container-input-color: white;
       }
 
 
@@ -58,6 +61,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header id="header" class$="[[_isMainHeaderHidden(page)]]" condenses fixed effects="material">
           <app-toolbar>
             <h4 condensed-title>Ubuntu codelabs</h4>
+            <paper-input type="search" value={{currentsearch}}
+                placeholder="search for codelabs" autosave="test" results="5">
+                <paper-icon-button suffix icon="search"></paper-icon-button>
+            </paper-input>
           </app-toolbar>
           <app-toolbar>
             <h1 title>Ubuntu codelabs</h1>
@@ -65,7 +72,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <codelab-selector name="codelab-selector"></codelab-selector>
+          <codelab-selector name="codelab-selector" current-search=[[currentsearch]]></codelab-selector>
           <my-codelabs name="codelabs" route="[[subroute]]"></my-codelabs>
         </iron-pages>
 

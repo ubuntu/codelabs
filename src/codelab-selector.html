@@ -20,7 +20,7 @@
     </style>
 
     <div class="horizontal layout wrap">
-      <template is="dom-repeat" items="[[codelabs]]">
+      <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords)}}">
         <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
                       difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
                       updated="[[item.updated]]" url="[[item.url]]"
@@ -50,6 +50,42 @@
             }
           },
           themesmap: Object,
+          currentSearch: {
+            type: String,
+            observer: '_updatekeywords',
+          },
+          listofkeywords: {
+            type: Array,
+            value: function() {
+              return [];
+            },
+          },
+        },
+
+        codelabfromscope: function(listofkeywords) {
+          // return a filter function for the current search string
+          return function(item) {
+            console.log(listofkeywords);
+            if (listofkeywords.length === 0)
+              return true;
+            var returnvalue = false;
+            var title = item.title.toLowerCase();
+            var summary = item.summary.toLowerCase();
+            var theme = item.theme.toLowerCase();
+            var tags = item.tags;
+            listofkeywords.forEach(function(searchterm) {
+              if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
+                  theme.indexOf(searchterm) !== -1) {
+                returnvalue = true;
+              }
+              tags.forEach(function(tag) {
+                if (tag.toLowerCase().indexOf(searchterm) !== -1) {
+                  returnvalue = true;
+                }
+              }, this);
+            }, this);
+            return returnvalue;
+          };
         },
 
         _codelabsInfoHandler: function(event) {
@@ -57,7 +93,17 @@
           event.detail.response["codelabs"].forEach(function(codelab) {
             this.push("codelabs", codelab);
           }, this);
-          console.log(this.codelabs);
+        },
+
+        _updatekeywords: function() {
+          // protect against uninitialized javascript
+          if (typeof this.listofkeywords === "undefined") {
+            return;
+          }
+          this.listofkeywords = [];
+          this.currentSearch.split(" ").forEach(function(searchterm) {
+            this.listofkeywords.push(searchterm.toLowerCase())
+          }, this);
         }
     });
 

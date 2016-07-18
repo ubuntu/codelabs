@@ -18,7 +18,8 @@
     "polymer": "polymer/polymer#^1.4.0",
     "codelab-components": "https://github.com/googlecodelabs/codelab-components.git#^1.0.5",
     "paper-card": "PolymerElements/paper-card",
-    "iron-ajax": "^1.4.0"
+    "iron-ajax": "^1.4.0",
+    "paper-input": "^1.1.15"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
