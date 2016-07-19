@@ -6,7 +6,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="color-by-theme-behavior.html">
+<link rel="import" href="color-by-category-behavior.html">
 
 <dom-module id="codelab-card">
 
@@ -15,7 +15,7 @@
     <style include="iron-flex iron-flex-alignment">
       :host {
         display: inline-block;
-        --theme-color: var(--paper-orange-700)
+        --category-color: var(--paper-orange-700)
       }
 
       paper-card {
@@ -23,7 +23,7 @@
       }
 
       .themed {
-        background-color: var(--theme-color);
+        background-color: var(--category-color);
       }
 
       .header {
@@ -71,7 +71,7 @@
     <paper-card class="vertical layout">
       <div class="card-content themed">
         <div class="horizontal end-justified layout">
-          <div class="category">[[theme]]</div>
+          <div class="category">[[category]]</div>
         </div>
         <div class="header">[[title]]
           <div class="duration light">
@@ -106,7 +106,7 @@
       is: 'codelab-card',
 
       behaviors: [
-        Polymer.ColorByThemeBehavior,
+        Polymer.ColorByCategoryBehavior,
       ],
 
       MAX_DIFFICULTY: 5,
@@ -114,9 +114,9 @@
       properties: {
         title: String,
         summary: String,
-        theme: {
+        category: {
           type: String,
-          observer: '_themeChanged',
+          observer: '_categoryChanged',
         },
         difficulty: Number,
         duration: Number,
@@ -133,8 +133,8 @@
         return new Array(this.MAX_DIFFICULTY - count);
       },
 
-      _themeChanged: function(theme) {
-        this.customStyle['--theme-color'] = this._color_by_theme(theme, this.themesmap);
+      _categoryChanged: function(category) {
+        this.customStyle['--category-color'] = this._color_by_category(category, this.categoriesmap);
         this.updateStyles();
       },
 

@@ -34,10 +34,10 @@
       </div>
       <div class="horizontal layout wrap">
         <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords, selectedcategory)}}">
-          <codelab-card title="[[item.title]]" summary="[[item.summary]]" theme="[[item.theme]]"
+          <codelab-card title="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
                         difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
                         updated="[[item.updated]]" url="[[item.url]]"
-                        themesmap="[[themesmap]]"></codelab-card>
+                        categoriesmap="[[categoriesmap]]"></codelab-card>
         </template>
 
         <iron-ajax
@@ -63,7 +63,7 @@
             return [];
           }
         },
-        themesmap: Object,
+        categoriesmap: Object,
         currentSearch: {
           type: String,
           observer: '_updatekeywords',
@@ -76,7 +76,7 @@
         },
         categories: {
           type: Array,
-          computed: "_buildthemecategories(themesmap)",
+          computed: "_buildcategories(categoriesmap)",
         }
       },
 
@@ -85,10 +85,10 @@
         return function(item) {
           var title = item.title.toLowerCase();
           var summary = item.summary.toLowerCase();
-          var theme = item.theme.toLowerCase();
+          var category = item.category.toLowerCase();
           var tags = item.tags;
 
-          if (selectedcategory !== theme && selectedcategory !== "All")
+          if (selectedcategory !== category && selectedcategory !== "All")
             return false;
           if (listofkeywords.length === 0)
             return true;
@@ -97,7 +97,7 @@
           listofkeywords.forEach(function(searchterm) {
             var searchterm_found = false;
             if (title.indexOf(searchterm) !== -1 || summary.indexOf(searchterm) !== -1 ||
-                theme.indexOf(searchterm) !== -1) {
+                category.indexOf(searchterm) !== -1) {
               searchterm_found = true;
             }
             tags.forEach(function(tag) {
@@ -112,7 +112,7 @@
       },
 
       _codelabsInfoHandler: function(event) {
-        this.themesmap = event.detail.response["themes"];
+        this.categoriesmap = event.detail.response["categories"];
         event.detail.response["codelabs"].forEach(function(codelab) {
           this.push("codelabs", codelab);
         }, this);
@@ -129,10 +129,10 @@
         }, this);
       },
 
-      _buildthemecategories: function(themesmap) {
-        var newthemes = Object.keys(themesmap).sort();
-        newthemes.unshift("All");
-        return newthemes;
+      _buildcategories: function(categoriesmap) {
+        var newcategories = Object.keys(categoriesmap).sort();
+        newcategories.unshift("All");
+        return newcategories;
       },
     });
 

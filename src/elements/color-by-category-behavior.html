@@ -1,10 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <script>
-  Polymer.ColorByThemeBehaviorImpl = {
+  Polymer.ColorByCategoryBehaviorImpl = {
 
     properties: {
-      themesmap: {
+      categoriesmap: {
         type: Object,
         value: function() {
           return {}
@@ -12,8 +12,8 @@
       },
     },
 
-    _color_by_theme: function(theme, themesmap) {
-      var color = themesmap[theme];
+    _color_by_category: function(category, categoriesmap) {
+      var color = categoriesmap[category];
       if (!color) {
         color = 'white';
       }
@@ -22,7 +22,7 @@
 
   };
 
-  Polymer.ColorByThemeBehavior = [
-    Polymer.ColorByThemeBehaviorImpl
+  Polymer.ColorByCategoryBehavior = [
+    Polymer.ColorByCategoryBehaviorImpl
   ];
 </script>
