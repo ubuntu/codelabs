@@ -112,10 +112,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _isMainHeaderHidden: function(page) {
         if (page === "codelabs") {
+          // as we will make the header disappear, trigger a relayout
+          this.$.header.notifyResize();
           return "hidden";
         }
-        // as we will make the header reappar, trigger a relayout
-        this.$.header.notifyResize();
         return "";
       },
 
