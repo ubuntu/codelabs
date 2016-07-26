@@ -143,7 +143,7 @@ func getCodeLabDir() (codelabDir string, err error) {
 		if dir == "/" {
 			return "", errors.New("Couldn't find any codelab directory")
 		}
-		codelabDir = path.Join(dir, "src", "codelab")
+		codelabDir = path.Join(dir, "src", "codelabs")
 		_, err := os.Stat(codelabDir)
 		_, err2 := os.Stat(path.Join(dir, "tools"))
 		if err != nil || err2 != nil {
