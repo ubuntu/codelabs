@@ -65,8 +65,6 @@ func cmdAdd() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	ensureInToolsDir()
-
 	args := unique(flag.Args())
 	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "ubuntu-template.html", "-o", codelabPath, "--prefix", "../../..", strings.Join(args, ", "))
 	cmd.Stdout = os.Stdout
@@ -81,15 +79,12 @@ func cmdUpdate() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	ensureInToolsDir()
 }
 
 func cmdRemove() {
 	if flag.NArg() == 0 {
 		fatalf("Need at least one codelab to remove. Try '-h' for options.")
 	}
-
-	ensureInToolsDir()
 
 }
 
@@ -204,7 +199,10 @@ func main() {
 	}
 	flag.Usage = usage
 	flag.CommandLine.Parse(os.Args[2:])
+
+	ensureInToolsDir()
 	cmd()
+
 	os.Exit(0)
 }
 
