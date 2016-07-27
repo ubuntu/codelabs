@@ -222,6 +222,14 @@ func main() {
 
 	cmd()
 
+	m := make(map[string]codelabs)
+	m["first_codelab"] = codelabs{"premier nom", 1}
+	m["other_codelab"] = codelabs{"autre nom", 3}
+
+	if err = generateCodelabsAPI(m, *categoriesTheme); err != nil {
+		fatalf("Couldn't save new categories.json api file: %s", err)
+	}
+
 	os.Exit(0)
 }
 
