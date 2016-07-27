@@ -29,8 +29,9 @@ import (
 )
 
 var (
-	globalGA string
-	version  = "0.1"
+	globalGA    string
+	codelabPath string
+	version     = "0.1"
 )
 
 const (
@@ -64,10 +65,10 @@ func cmdAdd() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	ensureInCodelabDir()
+	ensureInToolsDir()
 
 	args := unique(flag.Args())
-	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "../../tools/ubuntu-template.html", "--prefix", "../../..", strings.Join(args, ", "))
+	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "ubuntu-template.html", "-o", codelabPath, "--prefix", "../../..", strings.Join(args, ", "))
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
@@ -80,7 +81,7 @@ func cmdUpdate() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	ensureInCodelabDir()
+	ensureInToolsDir()
 }
 
 func cmdRemove() {
@@ -88,17 +89,19 @@ func cmdRemove() {
 		fatalf("Need at least one codelab to remove. Try '-h' for options.")
 	}
 
-	ensureInCodelabDir()
+	ensureInToolsDir()
 
 }
 
 // cd into codelab directory. Exit if failing
-func ensureInCodelabDir() {
-	codelabPath, err := getCodeLabDir()
+func ensureInToolsDir() {
+	var toolsPath string
+	var err error
+	toolsPath, codelabPath, err = getDirs()
 	if err != nil {
-		fatalf("Couldn't find codelab directory: %v", err)
+		fatalf("Couldn't find tools or codelab directory: %v", err)
 	}
-	os.Chdir(codelabPath)
+	os.Chdir(toolsPath)
 }
 
 // download or reuse existing claat binary from temp dir
@@ -131,28 +134,31 @@ func getClaat() (err error) {
 	return nil
 }
 
-// find codelab dir path relative to current executable
-func getCodeLabDir() (codelabDir string, err error) {
+// find codelab and tools dir path relative to current executable
+func getDirs() (toolsDir string, codelabDir string, err error) {
 
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-		return codelabDir, err
+		return toolsDir, codelabDir, err
 	}
 
 	for codelabDir == "" {
 		dir = path.Clean(path.Join(dir, ".."))
 		if dir == "/" {
-			return "", errors.New("Couldn't find any codelab directory")
+			return "", "", errors.New("Couldn't find any codelab or tools directory")
 		}
+		toolsDir = path.Join(dir, "tools")
 		codelabDir = path.Join(dir, "src", "codelabs")
-		_, err := os.Stat(codelabDir)
-		_, err2 := os.Stat(path.Join(dir, "tools"))
-		if err != nil || err2 != nil {
+		_, toolsExistErr := os.Stat(toolsDir)
+		_, codeLabsExistErr := os.Stat(codelabDir)
+		_, rootExistErr := os.Stat(path.Join(dir, "bower.json"))
+		if toolsExistErr != nil || codeLabsExistErr != nil || rootExistErr != nil {
+			toolsDir = ""
 			codelabDir = ""
 		}
 	}
 
-	return codelabDir, nil
+	return toolsDir, codelabDir, nil
 }
 
 // printf prints formatted string fmt with args to stderr.
