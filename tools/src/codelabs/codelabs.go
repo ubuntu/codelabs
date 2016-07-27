@@ -215,6 +215,11 @@ func main() {
 	flag.CommandLine.Parse(os.Args[2:])
 
 	ensureInToolsDir()
+	var err error
+	if categoriesTheme, err = loadCategoriesData("../categories.json"); err != nil {
+		fatalf("Couldn't load categories.json file: %s", err)
+	}
+
 	cmd()
 
 	os.Exit(0)
