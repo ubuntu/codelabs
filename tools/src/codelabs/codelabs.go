@@ -29,9 +29,11 @@ import (
 )
 
 var (
-	globalGA    string
-	codelabPath string
-	version     = "0.1"
+	globalGA        string
+	codelabPath     string
+	apiPath         string
+	version         = "0.1"
+	categoriesTheme *categories
 )
 
 const (
@@ -55,6 +57,11 @@ var (
 		"version": func() { fmt.Println(version) },
 	}
 )
+
+type codelabs struct {
+	Name       string
+	Difficulty int
+}
 
 func cmdAdd() {
 	if flag.NArg() == 0 {
@@ -98,7 +105,7 @@ func cmdRemove() {
 func ensureInToolsDir() {
 	var toolsPath string
 	var err error
-	toolsPath, codelabPath, err = getDirs()
+	toolsPath, codelabPath, apiPath, err = getDirs()
 	if err != nil {
 		fatalf("Couldn't find tools or codelab directory: %v", err)
 	}
@@ -136,30 +143,31 @@ func getClaat() (err error) {
 }
 
 // find codelab and tools dir path relative to current executable
-func getDirs() (toolsDir string, codelabDir string, err error) {
+func getDirs() (toolsDir string, codelabDir string, apiPath string, err error) {
 
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
-		return toolsDir, codelabDir, err
+		return toolsDir, codelabDir, apiPath, err
 	}
 
-	for codelabDir == "" {
+	rootDirFound := false
+	for rootDirFound != true {
 		dir = path.Clean(path.Join(dir, ".."))
 		if dir == "/" {
-			return "", "", errors.New("Couldn't find any codelab or tools directory")
+			return "", "", "", errors.New("Couldn't find any codelab or tools directory")
 		}
 		toolsDir = path.Join(dir, "tools")
 		codelabDir = path.Join(dir, "src", "codelabs")
+		apiPath = path.Join(dir, "api")
 		_, toolsExistErr := os.Stat(toolsDir)
 		_, codeLabsExistErr := os.Stat(codelabDir)
 		_, rootExistErr := os.Stat(path.Join(dir, "bower.json"))
-		if toolsExistErr != nil || codeLabsExistErr != nil || rootExistErr != nil {
-			toolsDir = ""
-			codelabDir = ""
+		if toolsExistErr == nil && codeLabsExistErr == nil && rootExistErr == nil {
+			rootDirFound = true
 		}
 	}
 
-	return toolsDir, codelabDir, nil
+	return toolsDir, codelabDir, apiPath, nil
 }
 
 // printf prints formatted string fmt with args to stderr.
