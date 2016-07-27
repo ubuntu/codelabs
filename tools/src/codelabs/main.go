@@ -239,7 +239,7 @@ func usage() {
 	flag.PrintDefaults()
 }
 
-const usageText = `Usage: codelab-tool <cmd>
+const usageText = `Usage: codelab <cmd>
 
 where cmd can :
 * add [flags] google_id [google_id…]
