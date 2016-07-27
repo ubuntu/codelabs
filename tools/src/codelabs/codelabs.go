@@ -22,6 +22,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 	"strings"
@@ -66,9 +67,12 @@ func cmdAdd() {
 	ensureInCodelabDir()
 
 	args := unique(flag.Args())
-	printf(strings.Join(args, ", "))
-
-	printf(globalGA)
+	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "../../tools/ubuntu-template.html", "--prefix", "../../..", strings.Join(args, ", "))
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		fatalf("Couldn't add new codelab")
+	}
 }
 
 func cmdUpdate() {
