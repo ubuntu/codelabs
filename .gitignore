@@ -4,3 +4,7 @@ node_modules
 build
 
 api/
+src/codelabs/
+tools/bin
+tools/pkg
+tools/src
