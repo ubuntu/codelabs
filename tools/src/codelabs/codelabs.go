@@ -42,7 +42,7 @@ const (
 	claatFileName = "claat-linux-amd64"
 	// FIXME: should be a proper dynamic link later on, with arch and other "latest" api
 	claatURL  = "https://github.com/googlecodelabs/tools/releases/download/v0.4.0/" + claatFileName
-	claatExec = "/tmp/" + claatFileName
+	claatExec = "./" + claatFileName
 )
 
 var (
@@ -101,10 +101,10 @@ func ensureInToolsDir() {
 
 // download or reuse existing claat binary from temp dir
 func getClaat() (err error) {
-	if _, err := os.Stat(claatExec); err != nil {
+	if _, err := os.Stat(claatFileName); err != nil {
 		printf("Downloading claat tool")
 		// Create the file
-		out, err := os.Create(claatExec)
+		out, err := os.Create(claatFileName)
 		if err != nil {
 			return err
 		}
@@ -124,7 +124,7 @@ func getClaat() (err error) {
 		}
 	}
 
-	os.Chmod(claatExec, 755)
+	os.Chmod(claatFileName, 755)
 
 	return nil
 }
