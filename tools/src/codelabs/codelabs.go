@@ -63,11 +63,7 @@ func cmdAdd() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	codelabPath, err := getCodeLabDir()
-	if err != nil {
-		fatalf("Couldn't find codelab directory: %v", err)
-	}
-	os.Chdir(codelabPath)
+	ensureInCodelabDir()
 
 	args := unique(flag.Args())
 	printf(strings.Join(args, ", "))
@@ -80,11 +76,7 @@ func cmdUpdate() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
-	codelabPath, err := getCodeLabDir()
-	if err != nil {
-		fatalf("Couldn't find codelab directory: %v", err)
-	}
-	os.Chdir(codelabPath)
+	ensureInCodelabDir()
 }
 
 func cmdRemove() {
@@ -92,12 +84,17 @@ func cmdRemove() {
 		fatalf("Need at least one codelab to remove. Try '-h' for options.")
 	}
 
+	ensureInCodelabDir()
+
+}
+
+// cd into codelab directory. Exit if failing
+func ensureInCodelabDir() {
 	codelabPath, err := getCodeLabDir()
 	if err != nil {
 		fatalf("Couldn't find codelab directory: %v", err)
 	}
 	os.Chdir(codelabPath)
-
 }
 
 // download or reuse existing claat binary from temp dir
