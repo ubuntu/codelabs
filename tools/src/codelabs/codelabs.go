@@ -79,6 +79,12 @@ func cmdUpdate() {
 		fatalf("Couldn't download %s command: %v", claatURL, err)
 	}
 
+	cmd := exec.Command(claatExec, "update", "-ga", globalGA, "--prefix", "../../..", codelabPath)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		fatalf("Couldn't add refresh codelabs")
+	}
 }
 
 func cmdRemove() {
