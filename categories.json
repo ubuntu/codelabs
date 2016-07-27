@@ -1,0 +1,13 @@
+{"categories": {
+  "snap": {
+    "maincolor": "var(--paper-orange-600)",
+  	"secondaryColor": "var(--paper-orange-400)",
+  	"lightColor": "var(--paper-orange-200)"
+    },
+  "snapcraft": {
+    "maincolor": "var(--paper-green-600)",
+  	"secondaryColor": "var(--paper-paper-400)",
+  	"lightColor": "var(--paper-paper-200)"
+    }
+  }
+}
