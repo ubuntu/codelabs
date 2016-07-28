@@ -22,7 +22,7 @@ func generateCodelabsAPI(codelabs []codelab, cats categories) (err error) {
 		return err
 	}
 
-	if err := ioutil.WriteFile(path.Join(apiPath, "codelab.json"), content, 0666); err != nil {
+	if err := ioutil.WriteFile(path.Join(apiPath, "codelabs.json"), content, 0666); err != nil {
 		return err
 	}
 

@@ -7,5 +7,7 @@ api/
 src/codelabs/
 tools/bin
 tools/pkg
-tools/src
+tools/src/*
+!tools/src/codelabs/
+tools/src/codelabs/codelabs
 tools/claat-*
