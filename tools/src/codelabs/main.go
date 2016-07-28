@@ -94,6 +94,42 @@ func cmdRemove() {
 		fatalf("Need at least one codelab to remove. Try '-h' for options.")
 	}
 
+	_, codelabsIDToDir, err := fetchAllCodelabs(codelabPath)
+	if err != nil {
+		fatalf("Couldn't introspect existing codelabs: %s", err)
+	}
+
+	var failure bool
+	for _, dir := range flag.Args() {
+		if err := removeDir(path.Join(codelabPath, dir)); err != nil {
+			// try to see if an ID was provided
+			if _, present := codelabsIDToDir[dir]; present {
+				if err2 := removeDir(path.Join(codelabPath, codelabsIDToDir[dir])); err2 != nil {
+					log.Printf("Couldn't find or remove: %s", path.Join(codelabPath, codelabsIDToDir[dir]))
+					failure = true
+				}
+			} else {
+				log.Printf("Couldn't find or remove: %s", path.Join(codelabPath, dir))
+				failure = true
+			}
+		}
+	}
+
+	if failure {
+		printf("One or more codelabs couldn't get removed")
+		// we don't exit here to regenerate current codelabs list
+	}
+
+}
+
+func removeDir(path string) (err error) {
+	if _, err = os.Stat(path); err != nil {
+		return err
+	}
+	if err = os.RemoveAll(path); err != nil {
+		log.Printf("Found, but couldn't remove %s: %v", path, err)
+	}
+	return err
 }
 
 // cd into codelab directory. Exit if failing
