@@ -17,3 +17,4 @@ tools/claat-*
 !src/codelabs/
 !tools/bin/codelabs
 !tools/claat-*
+!bower_components/
