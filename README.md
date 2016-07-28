@@ -4,12 +4,12 @@ This is our snap and snapcraft codelabs, fetched from google doc
 content.
 
 This is the source branch not containing compiled assets or codelabs.
-The binary branch is at https://github.com/ubuntu/codelabs-compiled, for
+The binary branch is at https://github.com/ubuntu/codelabs, for
 a ready to run website.
 
 ## Run the binary assets
 
-Once you are on the codelabs-compiled repo, you can just run the simple webserver
+Once you are on the codelabs repo, you can just run the simple webserver
 from the main repo:
 
  * tools/bin/server
@@ -34,7 +34,7 @@ You can use -ga <google_analytics> to override the default GA account.
 Codelabs are located in `src/codelabs`. All metadata are then regenerated for the website
 to pick up.
 
-Do not forget to add/commit and push to the `codelabs-compiled` branch each time you
+Do not forget to add/commit and push to the `codelabs` branch each time you
 generate or refresh the codelabs assets.
 
 ## Tweak category theming
