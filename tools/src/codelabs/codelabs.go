@@ -70,6 +70,9 @@ func fetchAllCodelabs(codelabDir string) (codelabsMap []codelab, codelabsDir map
 		case _ = <-exit:
 		}
 	}
+	close(answers)
+	close(errs)
+	close(exit)
 
 	// error handling
 	if resultErrs.String() != "" {
@@ -79,18 +82,3 @@ func fetchAllCodelabs(codelabDir string) (codelabsMap []codelab, codelabsDir map
 	return codelabsMap, codelabsDir, err
 
 }
-
-/*
-  { "title": "My snappy test codelab",
-    "summary": "In this codelab, you'll build a first snap, which will enables you to get started with this snappy world",
-    "category": "snap",
-    "difficulty": 1,
-    "duration": 10,
-    "tags": [
-      "snapcraft",
-      "snappy"
-    ],
-    "updated": "2016-07-14T12:46:11Z",
-    "url": "your-first-pwapp"
-  },
-*/

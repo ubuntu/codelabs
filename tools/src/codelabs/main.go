@@ -42,8 +42,8 @@ const (
 
 	// claat tool executable
 	claatFileName = "claat-linux-amd64"
-	// FIXME: should be a proper dynamic link later on, with arch and other "latest" api
-	claatURL  = "https://github.com/googlecodelabs/tools/releases/download/v0.4.0/" + claatFileName
+	// FIXME: we are using our fork for now due to "difficulty" additional tag
+	claatURL  = "https://people.canonical.com/~didrocks/" + claatFileName
 	claatExec = "./" + claatFileName
 )
 
