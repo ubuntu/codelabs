@@ -1,75 +1,43 @@
-# Polymer App Toolbox - Drawer Template
+# Our snap/snapcraft codelabs
 
-This template is a starting point for building apps using a drawer-based
-layout.  The layout is provided by `app-layout` elements.
+This is our snap and snapcraft codelabs, fetched from google doc
+content.
 
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
+This is the source branch not containing compiled assets or codelabs.
+The binary branch is at https://github.com/ubuntu/codelabs-compiled, for
+a ready to run website.
 
-The PRPL pattern, in a nutshell:
+## Run the binary assets
 
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
+Once you are on the codelabs-compiled repo, you can just run the simple webserver
+from the main repo:
 
-### Setup
+ * tools/bin/server
+   You can specify the port with -p <port_number>
+ * There is snap available name "snap-codelabs" which will run on your localhost,
+   port 8123 by default. You can install it with: sudo snap install snap-codelabs
+ * If you have polymer-cli (npm install -g polymer-cli), you can just run: polymer serve.
 
-##### Prerequisites
+## Add/Update/Remove codelabs
 
-Install [polymer-cli](https://github.com/Polymer/polymer-cli):
+You can use tools/codelabs binary which will fetch needed dependencies for you to
+add/update or remove codelabs.
 
-    npm install -g polymer-cli
+ * Adding a new codelabs is as simple as: `tools/bin/codelabs add <google_doc_id>`.
+You can add multiple docs at the same time.
+ * Refreshing all codelabs is `tools/bin/codelabs update`
+ * Remove a codelab is `tools/bin/codelabs remove <google_doc_id|codelab_name>.
+You can remove multiple docs at the same time.
 
-##### Initialize project from template
+You can use -ga <google_analytics> to override the default GA account.
 
-    mkdir my-app
-    cd my-app
-    polymer init app-drawer-template
+Codelabs are located in `src/codelabs`. All metadata are then regenerated for the website
+to pick up.
 
-### Start the development server
+Do not forget to add/commit and push to the `codelabs-compiled` branch each time you
+generate or refresh the codelabs assets.
 
-This command serves the app at `http://localhost:8080` and provides basic URL
-routing for the app:
+## Tweak category theming
 
-    polymer serve
-
-
-### Build
-
-This command performs HTML, CSS, and JS minification on the application
-dependencies, and generates a service-worker.js file with code to pre-cache the
-dependencies based on the entrypoint and fragments specified in `polymer.json`.
-The minified files are output to the `build/unbundled` folder, and are suitable
-for serving from a HTTP/2+Push compatible server.
-
-In addition the command also creates a fallback `build/bundled` folder,
-generated using fragment bundling, suitable for serving from non
-H2/push-compatible servers or to clients that do not support H2/Push.
-
-    polymer build
-
-### Test the build
-
-This command serves the minified version of the app in an unbundled state, as it would
-be served by a push-compatible server:
-
-    polymer serve build/unbundled
-
-This command serves the minified version of the app generated using fragment bundling:
-
-    polymer serve build/bundled
-
-### Extend
-
-You can extend the app by adding more elements that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections
-of the application.  Each new demand-loaded fragment should be added to the
-list of `fragments` in the included `polymer.json` file.  This will ensure
-those components and their dependencies are added to the list of pre-cached
-components (and will have bundles created in the fallback `bundled` build).
-
+The theming is for categories are located in `categories.json`.
 
