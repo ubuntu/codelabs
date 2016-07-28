@@ -3,9 +3,8 @@
 This is our snap and snapcraft codelabs, fetched from google doc
 content.
 
-This is the source branch not containing compiled assets or codelabs.
-The binary branch is at https://github.com/ubuntu/codelabs-compiled, for
-a ready to run website.
+This is the copiled containing compiled assets or codelabs.
+The source branch is at https://github.com/ubuntu/codelabs.
 
 ## Run the binary assets
 
