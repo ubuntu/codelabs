@@ -2,11 +2,13 @@ package main
 
 import (
 	"errors"
+	"flag"
 	"log"
 	"net/http"
 	"os"
 	"path"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -41,6 +43,9 @@ func rootHandler(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	port := flag.Int("p", 8123, "Port to listen at")
+	flag.Parse()
+
 	rootDir, err := getRootDir()
 	if err != nil {
 		log.Fatal(err)
@@ -49,7 +54,7 @@ func main() {
 
 	http.HandleFunc("/", rootHandler)
 
-	err = http.ListenAndServe(":8123", nil)
+	err = http.ListenAndServe(":"+strconv.Itoa(*port), nil)
 	if err != nil {
 		log.Fatal("Error listening: ", err)
 	}
