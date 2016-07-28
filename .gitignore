@@ -11,3 +11,9 @@ tools/src/*
 !tools/src/codelabs/
 tools/src/codelabs/codelabs
 tools/claat-*
+
+# special compiled codelabs
+!api/
+!src/codelabs/
+!tools/bin/codelabs
+!tools/claat-*
