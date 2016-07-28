@@ -58,11 +58,6 @@ var (
 	}
 )
 
-type codelabs struct {
-	Name       string
-	Difficulty int
-}
-
 func cmdAdd() {
 	if flag.NArg() == 0 {
 		fatalf("Need at least one codelab to import. Try '-h' for options.")
@@ -222,11 +217,13 @@ func main() {
 
 	cmd()
 
-	m := make(map[string]codelabs)
-	m["first_codelab"] = codelabs{"premier nom", 1}
-	m["other_codelab"] = codelabs{"autre nom", 3}
+	var codelabsMap []codelab
+	codelabsMap, _, err = fetchAllCodelabs(codelabPath)
+	if err != nil {
+		fatalf("Couldn't introspect existing codelabs: %s", err)
+	}
 
-	if err = generateCodelabsAPI(m, *categoriesTheme); err != nil {
+	if err = generateCodelabsAPI(codelabsMap, *categoriesTheme); err != nil {
 		fatalf("Couldn't save new categories.json api file: %s", err)
 	}
 

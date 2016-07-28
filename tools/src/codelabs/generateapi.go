@@ -7,11 +7,11 @@ import (
 )
 
 type api struct {
-	Codelabs   map[string]codelabs `json:"codelabs"`
-	Categories map[string]theme    `json:"categories"`
+	Codelabs   []codelab        `json:"codelabs"`
+	Categories map[string]theme `json:"categories"`
 }
 
-func generateCodelabsAPI(codelabs map[string]codelabs, cats categories) (err error) {
+func generateCodelabsAPI(codelabs []codelab, cats categories) (err error) {
 	apiContent := api{
 		Codelabs:   codelabs,
 		Categories: cats.Categories,
