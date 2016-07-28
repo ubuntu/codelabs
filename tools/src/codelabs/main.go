@@ -168,7 +168,7 @@ func getClaat() (err error) {
 		}
 	}
 
-	os.Chmod(claatFileName, 755)
+	os.Chmod(claatFileName, 0755)
 
 	return nil
 }
