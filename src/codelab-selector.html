@@ -85,7 +85,7 @@
         return function(item) {
           var title = item.title.toLowerCase();
           var summary = item.summary.toLowerCase();
-          var category = item.category.toLowerCase();
+          var category = item.category[0].toLowerCase();
           var tags = item.tags;
 
           if (selectedcategory !== category && selectedcategory !== "All")

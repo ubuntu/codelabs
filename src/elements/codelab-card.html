@@ -71,7 +71,7 @@
     <paper-card class="vertical layout">
       <div class="card-content themed">
         <div class="horizontal end-justified layout">
-          <div class="category">[[category]]</div>
+          <div class="category">[[firstcategory]]</div>
         </div>
         <div class="header">[[title]]
           <div class="duration light">
@@ -114,9 +114,10 @@
       properties: {
         title: String,
         summary: String,
-        category: {
+        category: Array,
+        firstcategory: {
           type: String,
-          observer: '_categoryChanged',
+          computed: '_extractFirstCategory(category)',
         },
         difficulty: Number,
         duration: Number,
@@ -133,9 +134,11 @@
         return new Array(this.MAX_DIFFICULTY - count);
       },
 
-      _categoryChanged: function(category) {
-        this.customStyle['--category-color'] = this._color_by_category(category, this.categoriesmap);
+      _extractFirstCategory: function(category) {
+        var firstcategory = category[0];
+        this.customStyle['--category-color'] = this._color_by_category(firstcategory, this.categoriesmap);
         this.updateStyles();
+        return firstcategory;
       },
 
     });
