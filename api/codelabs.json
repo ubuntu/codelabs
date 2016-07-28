@@ -2,7 +2,7 @@
   "codelabs": [
     {
       "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
-      "title": "My really first snap",
+      "title": "My real first snap",
       "summary": "In this codelab, you'll learn how to build your first snap, getting familiar with snapcraft and other tools.",
       "category": [
         "snapcraft"
@@ -15,7 +15,7 @@
         "pwa-dev-summit",
         "web"
       ],
-      "updated": "2016-07-28T09:32:08Z",
+      "updated": "2016-07-28T09:51:27Z",
       "url": "your-first-pwapp"
     },
     {

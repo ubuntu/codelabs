@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
+  "format": "ubuntu-template.html",
+  "prefix": "../../..",
+  "mainga": "UA-81281030-1",
+  "updated": "2016-07-28T09:51:27Z",
+  "id": "your-first-pwapp",
+  "duration": 12,
+  "title": "My real first snap",
+  "summary": "In this codelab, you'll learn how to build your first snap, getting familiar with snapcraft and other tools.",
+  "theme": "snapcraft",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "snapcraft"
+  ],
+  "tags": [
+    "io2016",
+    "kiosk",
+    "pwa-dev-summit",
+    "web"
+  ],
+  "feedback": "https://github.com/googlecodelabs/your-first-pwapp/issues",
+  "difficulty": 1,
+  "url": "your-first-pwapp"
+}
