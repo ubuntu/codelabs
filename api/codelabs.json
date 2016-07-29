@@ -10,12 +10,11 @@
       "difficulty": 1,
       "duration": 12,
       "tags": [
-        "io2016",
-        "kiosk",
-        "pwa-dev-summit",
-        "web"
+        "beginner",
+        "first-snap",
+        "snapcraft"
       ],
-      "updated": "2016-07-28T09:51:27Z",
+      "updated": "2016-07-28T15:17:57Z",
       "url": "your-first-pwapp"
     },
     {
@@ -40,14 +39,19 @@
   ],
   "categories": {
     "snap": {
-      "maincolor": "var(--paper-orange-600)",
-      "secondarycolor": "var(--paper-orange-400)",
-      "lightcolor": "var(--paper-orange-200)"
+      "maincolor": "var(--paper-indigo-500)",
+      "secondarycolor": "var(--paper-indigo-700)",
+      "lightcolor": "var(--paper-indigo-300)"
     },
     "snapcraft": {
-      "maincolor": "var(--paper-green-600)",
-      "secondarycolor": "var(--paper-paper-400)",
-      "lightcolor": "var(--paper-paper-200)"
+      "maincolor": "var(--paper-teal-500)",
+      "secondarycolor": "var(--paper-teal-700)",
+      "lightcolor": "var(--paper-teal-300)"
+    },
+    "unknown": {
+      "maincolor": "#444",
+      "secondarycolor": "#444",
+      "lightcolor": "#444"
     }
   }
 }
