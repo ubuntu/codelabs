@@ -12,7 +12,7 @@ a ready to run website.
 Once you are on the codelabs repo, you can just run the simple webserver
 from the main repo:
 
- * tools/bin/server
+ * ./server
    You can specify the port with -p <port_number>
  * There is snap available name "snap-codelabs" which will run on your localhost,
    port 8123 by default. You can install it with: sudo snap install snap-codelabs
@@ -20,13 +20,13 @@ from the main repo:
 
 ## Add/Update/Remove codelabs
 
-You can use tools/codelabs binary which will fetch needed dependencies for you to
+You can use ./codelabs binary which will fetch needed dependencies for you to
 add/update or remove codelabs.
 
- * Adding a new codelabs is as simple as: `tools/bin/codelabs add <google_doc_id>`.
+ * Adding a new codelabs is as simple as: `./codelabs add <google_doc_id>`.
 You can add multiple docs at the same time.
- * Refreshing all codelabs is `tools/bin/codelabs update`
- * Remove a codelab is `tools/bin/codelabs remove <google_doc_id|codelab_name>.
+ * Refreshing all codelabs is `./codelabs update`
+ * Remove a codelab is `./codelabs remove <google_doc_id|codelab_name>.
 You can remove multiple docs at the same time.
 
 You can use -ga <google_analytics> to override the default GA account.
