@@ -55,6 +55,8 @@ func main() {
 
 	http.HandleFunc("/", rootHandler)
 
+	log.Printf("Listening on http://localhost:%d", *port)
+
 	err = http.ListenAndServe(":"+strconv.Itoa(*port), nil)
 	if err != nil {
 		log.Fatal("Error listening: ", err)
