@@ -1,13 +1,17 @@
 {"categories": {
   "snap": {
-    "maincolor": "var(--paper-orange-600)",
-  	"secondaryColor": "var(--paper-orange-400)",
-  	"lightColor": "var(--paper-orange-200)"
-    },
+    "maincolor": "var(--paper-indigo-500)",
+    "secondarycolor": "var(--paper-indigo-700)",
+    "lightcolor": "var(--paper-indigo-300)"
+  },
   "snapcraft": {
-    "maincolor": "var(--paper-green-600)",
-  	"secondaryColor": "var(--paper-paper-400)",
-  	"lightColor": "var(--paper-paper-200)"
-    }
+    "maincolor": "var(--paper-teal-500)",
+    "secondarycolor": "var(--paper-teal-700)",
+    "lightcolor": "var(--paper-teal-300)"
+  },
+  "unknown": {
+    "maincolor": "#444",
+    "secondarycolor": "#444",
+    "lightcolor": "#444"
   }
 }
