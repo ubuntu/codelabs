@@ -33,7 +33,8 @@
         </paper-dropdown-menu>
       </div>
       <div class="horizontal layout wrap">
-        <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords, selectedcategory)}}">
+        <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords, selectedcategory)}}"
+              sort="sortcodelabs">
           <codelab-card title="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
                         difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
                         updated="[[item.updated]]" url="[[item.url]]"
@@ -109,6 +110,10 @@
           }, this);
           return should_show;
         };
+      },
+
+      sortcodelabs: function(codelab1, codelab2) {
+        return codelab1.difficulty > codelab2.difficulty;
       },
 
       _codelabsInfoHandler: function(event) {
