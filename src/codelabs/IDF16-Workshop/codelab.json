@@ -4,8 +4,8 @@
   "format": "ubuntu-template.html",
   "prefix": "../../..",
   "mainga": "UA-81281030-1",
-  "updated": "2016-07-26T19:33:27Z",
-  "id": "IDF16Workshop",
+  "updated": "2016-07-29T12:05:07Z",
+  "id": "IDF16-Workshop",
   "duration": 12,
   "title": "IDF16 Ubuntu Core Workshop",
   "summary": "In this workshop, you'll learn what Ubuntu Core is, what a snap is and how to use Intel technology to build an IoT solution.",
@@ -25,5 +25,5 @@
   ],
   "feedback": "https://github.com/googlecodelabs/your-first-pwapp/issues",
   "difficulty": 2,
-  "url": "IDF16Workshop"
+  "url": "IDF16-Workshop"
 }
