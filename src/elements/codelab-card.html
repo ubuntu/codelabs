@@ -15,18 +15,18 @@
     <style include="iron-flex iron-flex-alignment">
       :host {
         display: inline-block;
-        --category-color: var(--paper-orange-700)
       }
 
       paper-card {
         height: 100%;
       }
 
-      .themed {
+      .header {
+        padding: 10px;
         background-color: var(--category-color);
       }
 
-      .header {
+      .title {
         margin-top: 10px;
         @apply(--paper-font-headline);
         font-size: 20px;
@@ -38,7 +38,7 @@
 
       .duration {
         float: right;
-        font-size: 20px;
+        font-size: 17px;
         vertical-align: middle;
       }
 
@@ -61,25 +61,27 @@
 
       paper-button {
         color: white;
-        background-color: var(--paper-orange-900);
+        background-color: var(--category-secondary);
       }
       paper-button:hover {
-        background-color: var(--paper-orange-400);
+        background-color: var(--category-light);
       }
     </style>
 
     <paper-card class="vertical layout">
-      <div class="card-content themed">
+      <div class="header">
         <div class="horizontal end-justified layout">
           <div class="category">[[firstcategory]]</div>
         </div>
-        <div class="header">[[title]]
+        <div class="title">[[title]]
           <div class="duration light">
             <iron-icon icon="device:access-time"></iron-icon>
-            <span>[[duration]]min</span>
+            <span>[[duration]] min</span>
           </div>
         </div>
-        <p class="light">[[summary]]</p>
+      </div>
+      <div class="card-content">
+        <p>[[summary]]</p>
         <div>Difficulty:
           <template is="dom-repeat" items="[[_computeFullStars(difficulty)]]">
             <iron-icon class="star" icon="star"></iron-icon>
@@ -89,10 +91,10 @@
           </template>
         </div>
       </div>
-      <div class="themed flex"></div>
+      <div class="flex"></div>
       <div class="card-actions horizontal end-justified layout">
         <a href="/codelabs/[[url]]" tabindex="-1">
-          <paper-button class="start-action" raised>Start this codelab</paper-button>
+          <paper-button raised>Start this codelab</paper-button>
         </a>
       </div>
     </paper-card>
@@ -136,7 +138,10 @@
 
       _extractFirstCategory: function(category) {
         var firstcategory = category[0];
-        this.customStyle['--category-color'] = this._color_by_category(firstcategory, this.categoriesmap);
+        var colors = this._colors_by_category(firstcategory, this.categoriesmap);
+        this.customStyle['--category-color'] = colors.maincolor;
+        this.customStyle['--category-secondary'] = colors.secondarycolor;
+        this.customStyle['--category-light'] = colors.lightcolor;
         this.updateStyles();
         return firstcategory;
       },

@@ -12,12 +12,14 @@
       },
     },
 
-    _color_by_category: function(category, categoriesmap) {
-      var color = categoriesmap[category]["maincolor"];
-      if (!color) {
-        color = 'white';
+    _colors_by_category: function(category, categoriesmap) {
+      console.log(categoriesmap[category])
+      var colors = categoriesmap[category];
+      // set the unknown category in black
+      if (!colors) {
+        colors = categoriesmap["unknown"];
       }
-      return color;
+      return colors;
     },
 
   };
