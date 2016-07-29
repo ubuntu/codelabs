@@ -138,7 +138,10 @@
 
       _extractFirstCategory: function(category) {
         var firstcategory = category[0];
-        this.customStyle['--category-color'] = this._color_by_category(firstcategory, this.categoriesmap);
+        var colors = this._colors_by_category(firstcategory, this.categoriesmap);
+        this.customStyle['--category-color'] = colors.maincolor;
+        this.customStyle['--category-secondary'] = colors.secondarycolor;
+        this.customStyle['--category-light'] = colors.lightcolor;
         this.updateStyles();
         return firstcategory;
       },
