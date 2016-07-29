@@ -20,7 +20,6 @@ func getRootDir() (rootDir string, err error) {
 	}
 
 	for {
-		dir = path.Clean(path.Join(dir, ".."))
 		if dir == "/" {
 			return "", errors.New("Couldn't find root directory")
 		}
@@ -28,6 +27,8 @@ func getRootDir() (rootDir string, err error) {
 		if _, rootExistErr := os.Stat(path.Join(dir, "bower.json")); rootExistErr == nil {
 			return dir, nil
 		}
+
+		dir = path.Clean(path.Join(dir, ".."))
 	}
 
 }
