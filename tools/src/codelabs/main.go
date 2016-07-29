@@ -183,7 +183,6 @@ func getDirs() (toolsDir string, codelabDir string, apiPath string, err error) {
 
 	rootDirFound := false
 	for rootDirFound != true {
-		dir = path.Clean(path.Join(dir, ".."))
 		if dir == "/" {
 			return "", "", "", errors.New("Couldn't find any codelab or tools directory")
 		}
@@ -196,6 +195,7 @@ func getDirs() (toolsDir string, codelabDir string, apiPath string, err error) {
 		if toolsExistErr == nil && codeLabsExistErr == nil && rootExistErr == nil {
 			rootDirFound = true
 		}
+		dir = path.Clean(path.Join(dir, ".."))
 	}
 
 	return toolsDir, codelabDir, apiPath, nil
