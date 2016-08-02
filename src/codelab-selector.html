@@ -137,6 +137,7 @@
       _buildcategories: function(categoriesmap) {
         var newcategories = Object.keys(categoriesmap).sort();
         newcategories.unshift("All");
+        newcategories.delete("unknown");
         return newcategories;
       },
     });
