@@ -9,12 +9,14 @@ import (
 type api struct {
 	Codelabs   []codelab        `json:"codelabs"`
 	Categories map[string]theme `json:"categories"`
+	Events     map[string]event `json:"events"`
 }
 
-func generateCodelabsAPI(codelabs []codelab, cats categories) (err error) {
+func generateCodelabsAPI(codelabs []codelab, cats categoriesEvents) (err error) {
 	apiContent := api{
 		Codelabs:   codelabs,
 		Categories: cats.Categories,
+		Events:     cats.Events,
 	}
 
 	var content []byte

@@ -11,19 +11,26 @@ type theme struct {
 	LightColor     string `json:"lightcolor"`
 }
 
-type categories struct {
-	Categories map[string]theme `json:"categories"`
+type event struct {
+	Name        string `json:"name"`
+	Logo        string `json:"logo"`
+	Description string `json:"description"`
 }
 
-func loadCategoriesData(filePath string) (categoriesData *categories, err error) {
+type categoriesEvents struct {
+	Categories map[string]theme `json:"categories"`
+	Events     map[string]event `json:"events"`
+}
+
+func loadCategoriesData(filePath string) (c *categoriesEvents, err error) {
 	categoriesFileContent, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := json.Unmarshal(categoriesFileContent, &categoriesData); err != nil {
+	if err := json.Unmarshal(categoriesFileContent, &c); err != nil {
 		return nil, err
 	}
 
-	return categoriesData, nil
+	return c, nil
 }
