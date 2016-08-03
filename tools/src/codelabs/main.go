@@ -29,11 +29,11 @@ import (
 )
 
 var (
-	globalGA        string
-	codelabPath     string
-	apiPath         string
-	version         = "0.1"
-	categoriesTheme *categories
+	globalGA    string
+	codelabPath string
+	apiPath     string
+	version     = "0.1"
+	catEvents   *categoriesEvents
 )
 
 const (
@@ -247,7 +247,7 @@ func main() {
 
 	ensureInToolsDir()
 	var err error
-	if categoriesTheme, err = loadCategoriesData("../categories.json"); err != nil {
+	if catEvents, err = loadCategoriesData("../categories-events.json"); err != nil {
 		fatalf("Couldn't load categories.json file: %s", err)
 	}
 
@@ -259,7 +259,7 @@ func main() {
 		fatalf("Couldn't introspect existing codelabs: %s", err)
 	}
 
-	if err = generateCodelabsAPI(codelabsMap, *categoriesTheme); err != nil {
+	if err = generateCodelabsAPI(codelabsMap, *catEvents); err != nil {
 		fatalf("Couldn't save new categories.json api file: %s", err)
 	}
 

@@ -36,7 +36,11 @@ to pick up.
 Do not forget to add/commit and push to the `codelabs` branch each time you
 generate or refresh the codelabs assets.
 
-## Tweak category theming
+## Tweak category theming and events
 
-The theming is for categories are located in `categories.json`.
+The theming is for categories are located in `categories-events.json`.
+Only categories available there will be shown in the dropdown filters.
 
+Adding events enables to get events/<event_name> page, which is filtering
+codelabs for which one tags match this event.
+Images are relative path to images/events/.
