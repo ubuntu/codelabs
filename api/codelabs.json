@@ -2,20 +2,20 @@
   "codelabs": [
     {
       "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
-      "title": "My real first snap",
-      "summary": "In this codelab, you'll learn how to build your first snap, getting familiar with snapcraft and other tools.",
+      "title": "Basic snap usages",
+      "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
       "category": [
-        "snapcraft"
+        "snap"
       ],
       "difficulty": 1,
-      "duration": 12,
+      "duration": 10,
       "tags": [
         "beginner",
-        "first-snap",
-        "snapcraft"
+        "snap",
+        "usage"
       ],
-      "updated": "2016-07-28T15:17:57Z",
-      "url": "your-first-pwapp"
+      "updated": "2016-08-03T14:57:37Z",
+      "url": "basic-snap-usage"
     },
     {
       "source": "1WIC5Tz8W5s6fqTy-M8dX78qUAXO_nGCsiOo4p5aVP6E",
@@ -27,13 +27,14 @@
       "difficulty": 2,
       "duration": 12,
       "tags": [
+        "idf-2016",
         "idf16",
         "intel gt",
         "snap",
         "snapcraft",
         "ubuntu core"
       ],
-      "updated": "2016-07-29T12:05:07Z",
+      "updated": "2016-08-03T14:58:17Z",
       "url": "IDF16-Workshop"
     }
   ],
@@ -52,6 +53,13 @@
       "maincolor": "#444",
       "secondarycolor": "#444",
       "lightcolor": "#444"
+    }
+  },
+  "events": {
+    "idf-2016": {
+      "name": "IDF 2016",
+      "logo": "idf16.jpg",
+      "description": "This workshop is taking place at IDF in SF (2016)."
     }
   }
 }
