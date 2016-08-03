@@ -20,9 +20,28 @@
         margin: 10px;
         max-width: 380px;
       }
+      .event-wrapper {
+        background-color: white;
+        padding: 10px;
+      }
+      .event-logo {
+        min-width: 200px;
+      }
+      .event-description {
+        margin-left: 20px;
+      }
     </style>
 
     <div>
+      <template is="dom-if" if="{{currentEvent.id}}">
+        <div class="horizontal layout event-wrapper">
+          <img class="event-logo" src="/images/events/{{currentEvent.logo}}" />
+          <div class="event-description">
+            <h1>{{currentEvent.name}}</h1>
+            <p>{{currentEvent.description}}</p>
+          </div>
+        </div>
+      </template>
       <div class="horizontal end-justified layout">
         <paper-dropdown-menu label="Category" value="{{selectedcategory}}">
           <paper-listbox class="dropdown-content" selected="0">
