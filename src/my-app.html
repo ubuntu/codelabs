@@ -73,6 +73,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <codelab-selector name="codelab-selector" current-search=[[currentsearch]]></codelab-selector>
+          <codelab-selector name="events" event-route="[[subroute]]" current-search=[[currentsearch]]></codelab-selector>
           <my-codelabs name="codelabs" route="[[subroute]]"></my-codelabs>
         </iron-pages>
 
@@ -106,8 +107,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _pageChanged: function(page) {
         // load page import on demand.
+        var pageToLoad = page;
+        if (page == "events") {
+          pageToLoad = "codelab-selector";
+        }
         this.importHref(
-          this.resolveUrl(page + '.html'), null, null, true);
+          this.resolveUrl(pageToLoad + '.html'), null, null, true);
       },
 
       _isMainHeaderHidden: function(page) {

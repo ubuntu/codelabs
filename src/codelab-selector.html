@@ -33,7 +33,7 @@
         </paper-dropdown-menu>
       </div>
       <div class="horizontal layout wrap">
-        <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(listofkeywords, selectedcategory)}}"
+        <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(currentEvent, listofkeywords, selectedcategory)}}"
               sort="sortcodelabs">
           <codelab-card title="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
                         difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
@@ -46,6 +46,10 @@
           url="/api/codelabs.json"
           handle-as="json"
           on-response="_codelabsInfoHandler">
+        <app-route
+          route="{{eventRoute}}"
+          pattern="/:event"
+          data="{{routeData}}"></app-route>
       </div>
     </div>
 
@@ -65,6 +69,7 @@
           }
         },
         categoriesmap: Object,
+        eventsmap: Object,
         currentSearch: {
           type: String,
           observer: '_updatekeywords',
@@ -78,10 +83,29 @@
         categories: {
           type: Array,
           computed: "_buildcategories(categoriesmap)",
+        },
+        eventRoute: String,
+        currentEvent: {
+          type: Object,
+          value: {},
+          computed: "_eventChanged(routeData.event, eventsmap)"
         }
       },
 
-      codelabfromscope: function(listofkeywords, selectedcategory) {
+      _eventChanged: function(eventID, eventsmap) {
+        if (eventID == "web") {
+          return {}
+        }
+        var currentEvent = {
+          "id": eventID,
+        }
+        currentEvent.name = eventsmap[eventID].name;
+        currentEvent.logo = eventsmap[eventID].logo;
+        currentEvent.description = eventsmap[eventID].description;
+        return currentEvent;
+      },
+
+      codelabfromscope: function(currentEvent, listofkeywords, selectedcategory) {
         // return a filter function for the current search string
         return function(item) {
           var title = item.title.toLowerCase();
@@ -118,6 +142,7 @@
 
       _codelabsInfoHandler: function(event) {
         this.categoriesmap = event.detail.response["categories"];
+        this.eventsmap = event.detail.response["events"];
         event.detail.response["codelabs"].forEach(function(codelab) {
           this.push("codelabs", codelab);
         }, this);
