@@ -247,7 +247,7 @@ func main() {
 
 	ensureInToolsDir()
 	var err error
-	if catEvents, err = loadCategoriesData("../categories.json"); err != nil {
+	if catEvents, err = loadCategoriesData("../categories-events.json"); err != nil {
 		fatalf("Couldn't load categories.json file: %s", err)
 	}
 
