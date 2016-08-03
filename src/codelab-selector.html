@@ -113,6 +113,12 @@
           var category = item.category[0].toLowerCase();
           var tags = item.tags;
 
+          // filter by event matching
+          if (currentEvent.id && item.environments.indexOf(currentEvent.id) < 0) {
+            return false;
+          }
+
+          // filter by category
           if (selectedcategory !== category && selectedcategory !== "All")
             return false;
           if (listofkeywords.length === 0)
