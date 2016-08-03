@@ -136,7 +136,7 @@
           var tags = item.tags;
 
           // filter by event matching
-          if (currentEvent.id && item.environments.indexOf(currentEvent.id) < 0) {
+          if (currentEvent.id && tags.indexOf(currentEvent.id) < 0) {
             return false;
           }
 
