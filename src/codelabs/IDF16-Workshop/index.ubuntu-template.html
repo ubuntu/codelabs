@@ -1,6 +1,7 @@
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/codelab-components/google-codelab-elements.html">
+<link rel="import" href="../../../bower_components/app-route/app-route.html">
 
 <dom-module id="IDF16-Workshop">
 
@@ -23,9 +24,13 @@
   </style>
 
 
-  <google-codelab title="IDF16 Ubuntu Core Workshop"
+  <google-codelab id="codelabobj"
+                  title="IDF16 Ubuntu Core Workshop"
                   environment="web"
                   feedback-link="https://github.com/googlecodelabs/your-first-pwapp/issues">
+    <app-route
+      route="{{route}}"
+      tail="{{routeTail}}"></app-route>
     
       <google-codelab-step label="Introduction to Grosse Tete and Ubuntu Core" duration="0">
         <ul>
@@ -795,6 +800,40 @@ self.addEventListener(&#39;install&#39;, function(e) {
   Polymer({
 
     is: 'IDF16-Workshop',
+
+    properties: {
+      route: {
+        type: String
+      },
+      backURL: {
+        type: String,
+        value: "/",
+      },
+    },
+
+    observers: [
+      '_getParams(routeTail.__queryParams)'
+    ],
+
+    ready: function() {
+      
+      
+      this.$.codelabobj._goToHome = this._goToHome.bind(this)
+    },
+
+    _goToHome: function() {
+        
+        window.location.href = this.backURL;
+    },
+
+    _getParams: function(params) {
+      if (!params) {
+        return;
+      }
+      if (params.backURL !== undefined) {
+          this.backURL = decodeURIComponent(params.backURL)
+      }
+    },
 
   });
 

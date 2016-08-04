@@ -1,6 +1,7 @@
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/codelab-components/google-codelab-elements.html">
+<link rel="import" href="../../../bower_components/app-route/app-route.html">
 
 <dom-module id="basic-snap-usage">
 
@@ -23,9 +24,13 @@
   </style>
 
 
-  <google-codelab title="Basic snap usages"
+  <google-codelab id="codelabobj"
+                  title="Basic snap usages"
                   environment="web"
                   feedback-link="https://github.com/ubuntu/codelabs/issues">
+    <app-route
+      route="{{route}}"
+      tail="{{routeTail}}"></app-route>
     
       <google-codelab-step label="Introduction" duration="1">
         <p>Welcome to the world of snaps! In this codelab, we are going to cover the very basics on how to use <a href="http://snapcraft.io/" target="_blank">snaps</a> on your Linux distribution, and you&#39;ll directly see the main benefits of them in action.</p>
@@ -258,6 +263,40 @@ Hello, world!</pre>
   Polymer({
 
     is: 'basic-snap-usage',
+
+    properties: {
+      route: {
+        type: String
+      },
+      backURL: {
+        type: String,
+        value: "/",
+      },
+    },
+
+    observers: [
+      '_getParams(routeTail.__queryParams)'
+    ],
+
+    ready: function() {
+      
+      
+      this.$.codelabobj._goToHome = this._goToHome.bind(this)
+    },
+
+    _goToHome: function() {
+        
+        window.location.href = this.backURL;
+    },
+
+    _getParams: function(params) {
+      if (!params) {
+        return;
+      }
+      if (params.backURL !== undefined) {
+          this.backURL = decodeURIComponent(params.backURL)
+      }
+    },
 
   });
 
