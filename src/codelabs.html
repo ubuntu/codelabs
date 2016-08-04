@@ -14,7 +14,8 @@
     <app-route
       route="{{route}}"
       pattern="/:codelab"
-      data="{{routeData}}"></app-route>
+      data="{{routeData}}"
+      tail="{{routeTail}}"></app-route>
 
       <iron-pages id="codelabwrapper" role="main" selected="[[codelab]]" attr-for-selected="name">
       </iron-pages>
@@ -46,6 +47,13 @@
       ],
 
       _codelabChanged: function(codelab) {
+        // FIXME (if upstream solution)
+        // as we data-bind "subroute", even when not active, the view in map
+        // /events/events_id -> codelab_id matches :codelabs and return invalid content
+        // escape if we are not current view
+        if (!this.classList.contains("iron-selected")) {
+          return;
+        }
         this.codelab = codelab;
         // load codelab import on demand.
         var link = this.importHref(
@@ -54,6 +62,7 @@
             if (link) {
               var dynamicEl = document.createElement(codelab);
               dynamicEl.setAttribute("name", codelab);
+              dynamicEl.route = this.routeTail;
               Polymer.dom(this.$.codelabwrapper).appendChild(dynamicEl);
             }
           }, null, true);

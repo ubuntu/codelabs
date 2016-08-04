@@ -1,6 +1,7 @@
 <!-- This is the adapted ubuntu template based on default template for 'html' output format of the tool -->
 <link rel="import" href="{{.Prefix}}/bower_components/polymer/polymer.html">
 <link rel="import" href="{{.Prefix}}/bower_components/codelab-components/google-codelab-elements.html">
+<link rel="import" href="{{.Prefix}}/bower_components/app-route/app-route.html">
 
 <dom-module id="{{.Meta.ID}}">
 
@@ -23,9 +24,13 @@
   </style>
 
 
-  <google-codelab title="{{.Meta.Title}}"
+  <google-codelab id="codelabobj"
+                  title="{{.Meta.Title}}"
                   environment="{{index .Env}}"
                   feedback-link="{{.Meta.Feedback}}">
+    <app-route
+      route="{{"{{"}}route{{"}}"}}"
+      tail="{{"{{"}}routeTail{{"}}"}}"></app-route>
     {{range .Steps}}{{if matchEnv .Tags $.Env}}
       <google-codelab-step label="{{.Title}}" duration="{{.Duration.Minutes}}">
         {{.Content | renderHTML $.Env}}
@@ -69,6 +74,40 @@
   Polymer({
 
     is: '{{.Meta.ID}}',
+
+    properties: {
+      route: {
+        type: String
+      },
+      backURL: {
+        type: String,
+        value: "/",
+      },
+    },
+
+    observers: [
+      '_getParams(routeTail.__queryParams)'
+    ],
+
+    ready: function() {
+      // override default _goToHome function which prevents navigating to different website
+      // we also support inline link to avoid polluating the url for internal website navigation
+      this.$.codelabobj._goToHome = this._goToHome.bind(this)
+    },
+
+    _goToHome: function() {
+        // navigate away to the referent page
+        window.location.href = this.backURL;
+    },
+
+    _getParams: function(params) {
+      if (!params) {
+        return;
+      }
+      if (params.backURL !== undefined) {
+          this.backURL = decodeURIComponent(params.backURL)
+      }
+    },
 
   });
 
