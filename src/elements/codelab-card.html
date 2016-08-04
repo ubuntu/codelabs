@@ -93,7 +93,7 @@
       </div>
       <div class="flex"></div>
       <div class="card-actions horizontal end-justified layout">
-        <a href="/codelabs/[[url]]" tabindex="-1">
+        <a href="/codelabs/[[url]][[generateBackParameter]]" tabindex="-1">
           <paper-button raised>Start this codelab</paper-button>
         </a>
       </div>
@@ -126,6 +126,11 @@
         tags: Array,
         updated: String,
         url: String,
+        currenturl: String,
+        generateBackParameter: {
+          type: String,
+          computed: '_generateBackParameter(currenturl)',
+        },
       },
 
       _computeFullStars: function(count) {
@@ -145,6 +150,13 @@
         this.updateStyles();
         return firstcategory;
       },
+
+      _generateBackParameter: function (currenturl) {
+        if (currenturl) {
+            return "?backURL=" + encodeURIComponent(currenturl);
+        }
+        return "";
+      }
 
     });
 

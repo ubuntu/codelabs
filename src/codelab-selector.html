@@ -4,6 +4,7 @@
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 
 <link rel="import" href="elements/codelab-card.html">
 
@@ -59,7 +60,7 @@
                 sort="sortcodelabs">
             <codelab-card title="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
                           difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
-                          updated="[[item.updated]]" url="[[item.url]]"
+                          updated="[[item.updated]]" url="[[item.url]]" currenturl="[[eventRoute.prefix]][[eventRoute.path]]"
                           categoriesmap="[[categoriesmap]]"></codelab-card>
           </template>
         </div>
