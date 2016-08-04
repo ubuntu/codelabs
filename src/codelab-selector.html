@@ -116,6 +116,13 @@
       },
 
       _eventChanged: function(eventID, eventsmap) {
+        // FIXME (if upstream solution)
+        // as we data-bind "subroute", even when not active, the view in map
+        // /codelabs/codelab_id -> codelab_id matches :events and return invalid content
+        // escape if we are not current view
+        if (!this.classList.contains("iron-selected")) {
+          return;
+        }
         if (eventID == "web") {
           return {}
         }

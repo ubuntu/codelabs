@@ -47,6 +47,13 @@
       ],
 
       _codelabChanged: function(codelab) {
+        // FIXME (if upstream solution)
+        // as we data-bind "subroute", even when not active, the view in map
+        // /events/events_id -> codelab_id matches :codelabs and return invalid content
+        // escape if we are not current view
+        if (!this.classList.contains("iron-selected")) {
+          return;
+        }
         this.codelab = codelab;
         // load codelab import on demand.
         var link = this.importHref(
