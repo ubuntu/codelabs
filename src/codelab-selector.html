@@ -5,6 +5,8 @@
 <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
 
 <link rel="import" href="elements/codelab-card.html">
 
@@ -15,6 +17,12 @@
     <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
+      }
+      paper-tabs {
+        --paper-tabs-selection-bar-color: var(--app-primary-color);
+      }
+      paper-tab {
+        --paper-tab-ink: var(--app-primary-color);
       }
       .content {
         padding: 10px;
@@ -46,7 +54,13 @@
         </div>
       </template>
       <div class="content">
-        <div class="horizontal end-justified layout">
+        <div class="horizontal layout end">
+          <paper-tabs selected="{{filteringMethod}}">
+            <paper-tab>DIFFICULTY</paper-tab>
+            <paper-tab>RECENT</paper-tab>
+            <paper-tab>DURATION</paper-tab>
+          </paper-tabs>
+          <div class="flex"></div>
           <paper-dropdown-menu label="Category" value="{{selectedcategory}}">
             <paper-listbox class="dropdown-content" selected="0">
               <template is="dom-repeat" items="[[categories]]">
@@ -57,7 +71,7 @@
         </div>
         <div class="horizontal layout wrap">
           <template is="dom-repeat" items="[[codelabs]]" filter="{{codelabfromscope(currentEvent, listofkeywords, selectedcategory)}}"
-                sort="sortcodelabs">
+                sort="{{_sortcodelabs(filteringMethod)}}">
             <codelab-card title="[[item.title]]" summary="[[item.summary]]" category="[[item.category]]"
                           difficulty="[[item.difficulty]]" duration="[[item.duration}}" tags="[[item.tags]]"
                           updated="[[item.updated]]" url="[[item.url]]" currenturl="[[eventRoute.prefix]][[eventRoute.path]]"
@@ -112,7 +126,11 @@
           type: Object,
           value: {},
           computed: "_eventChanged(routeData.event, eventsmap)"
-        }
+        },
+        filteringMethod: {
+          type: Number,
+          value: 0,
+        },
       },
 
       _eventChanged: function(eventID, eventsmap) {
@@ -172,8 +190,22 @@
         };
       },
 
-      sortcodelabs: function(codelab1, codelab2) {
-        return codelab1.difficulty > codelab2.difficulty;
+      _sortcodelabs: function(filteringMethod) {
+        switch(filteringMethod) {
+          case 0:
+            return function(codelab1, codelab2) {
+              return codelab1.difficulty > codelab2.difficulty;
+            };
+          case 1:
+          return function(codelab1, codelab2) {
+            return codelab1.updated > codelab2.updated;
+          };
+          case 2:
+          return function(codelab1, codelab2) {
+            return codelab1.duration > codelab2.duration;
+          };
+        }
+
       },
 
       _codelabsInfoHandler: function(event) {
