@@ -5,11 +5,4 @@ build
 
 api/
 src/codelabs/
-tools/bin
-tools/pkg
-tools/src/*
-!tools/src/codelabs/
-!tools/src/server/
-tools/src/codelabs/codelabs
-tools/src/server/server
 tools/claat-*
