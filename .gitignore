@@ -10,7 +10,4 @@ tools/claat-*
 # special compiled codelabs
 !api/
 !src/codelabs/
-!tools/bin/codelabs
-!tools/bin/server
-!tools/claat-*
 !bower_components/
