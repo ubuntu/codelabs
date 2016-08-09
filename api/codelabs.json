@@ -1,6 +1,25 @@
 {
   "codelabs": [
     {
+      "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
+      "title": "Creating your first snap",
+      "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
+      "category": [
+        "snapcraft"
+      ],
+      "difficulty": 1,
+      "duration": 20,
+      "tags": [
+        "beginner",
+        "build",
+        "idf-2016",
+        "snapcraft",
+        "usage"
+      ],
+      "updated": "2016-08-08T15:32:40Z",
+      "url": "creating-first-snap"
+    },
+    {
       "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
       "title": "Basic snap usages",
       "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
@@ -11,10 +30,11 @@
       "duration": 10,
       "tags": [
         "beginner",
+        "idf-2016",
         "snap",
         "usage"
       ],
-      "updated": "2016-08-03T14:57:37Z",
+      "updated": "2016-08-05T14:48:14Z",
       "url": "basic-snap-usage"
     },
     {

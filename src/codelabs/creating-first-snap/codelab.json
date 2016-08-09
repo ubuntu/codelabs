@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
+  "format": "ubuntu-template.html",
+  "prefix": "../../..",
+  "mainga": "UA-81281030-1",
+  "updated": "2016-08-08T15:32:40Z",
+  "id": "creating-first-snap",
+  "duration": 20,
+  "title": "Creating your first snap",
+  "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
+  "theme": "snapcraft",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "snapcraft"
+  ],
+  "tags": [
+    "beginner",
+    "build",
+    "idf-2016",
+    "snapcraft",
+    "usage"
+  ],
+  "feedback": "https://github.com/ubuntu/codelabs/issues",
+  "difficulty": 1,
+  "url": "creating-first-snap"
+}
