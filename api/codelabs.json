@@ -1,22 +1,23 @@
 {
   "codelabs": [
     {
-      "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
-      "title": "Basic snap usage",
-      "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
+      "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
+      "title": "Creating your first snap",
+      "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
       "category": [
-        "snap"
+        "snapcraft"
       ],
       "difficulty": 1,
-      "duration": 10,
+      "duration": 20,
       "tags": [
         "beginner",
+        "build",
         "idf-2016",
-        "snap",
+        "snapcraft",
         "usage"
       ],
-      "updated": "2016-08-29T15:34:58Z",
-      "url": "basic-snap-usage"
+      "updated": "2016-08-29T15:47:37Z",
+      "url": "creating-first-snap"
     },
     {
       "source": "1WIC5Tz8W5s6fqTy-M8dX78qUAXO_nGCsiOo4p5aVP6E",
@@ -39,23 +40,22 @@
       "url": "IDF16-Workshop"
     },
     {
-      "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
-      "title": "Creating your first snap",
-      "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
+      "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
+      "title": "Basic snap usage",
+      "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
       "category": [
-        "snapcraft"
+        "snap"
       ],
       "difficulty": 1,
-      "duration": 20,
+      "duration": 10,
       "tags": [
         "beginner",
-        "build",
         "idf-2016",
-        "snapcraft",
+        "snap",
         "usage"
       ],
-      "updated": "2016-08-29T15:47:37Z",
-      "url": "creating-first-snap"
+      "updated": "2016-08-31T14:21:54Z",
+      "url": "basic-snap-usage"
     }
   ],
   "categories": {
