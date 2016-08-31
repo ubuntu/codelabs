@@ -4,10 +4,10 @@
   "format": "ubuntu-template.html",
   "prefix": "../../..",
   "mainga": "UA-81281030-1",
-  "updated": "2016-08-05T14:48:14Z",
+  "updated": "2016-08-29T15:34:58Z",
   "id": "basic-snap-usage",
   "duration": 10,
-  "title": "Basic snap usages",
+  "title": "Basic snap usage",
   "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
   "theme": "snap",
   "status": [

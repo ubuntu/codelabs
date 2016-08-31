@@ -4,9 +4,9 @@
   "format": "ubuntu-template.html",
   "prefix": "../../..",
   "mainga": "UA-81281030-1",
-  "updated": "2016-08-03T14:58:17Z",
+  "updated": "2016-08-17T22:20:07Z",
   "id": "IDF16-Workshop",
-  "duration": 12,
+  "duration": 0,
   "title": "IDF16 Ubuntu Core Workshop",
   "summary": "In this workshop, you'll learn what Ubuntu Core is, what a snap is and how to use Intel technology to build an IoT solution.",
   "theme": "snap",
@@ -19,7 +19,7 @@
   "tags": [
     "idf-2016",
     "idf16",
-    "intel gt",
+    "intel joule",
     "snap",
     "snapcraft",
     "ubuntu core"

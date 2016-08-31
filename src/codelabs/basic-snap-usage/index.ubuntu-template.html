@@ -25,7 +25,7 @@
 
 
   <google-codelab id="codelabobj"
-                  title="Basic snap usages"
+                  title="Basic snap usage"
                   environment="web"
                   feedback-link="https://github.com/ubuntu/codelabs/issues">
     <app-route
@@ -110,23 +110,22 @@ $ sudo zypper install snapd</pre>
         <h2>Searching for a snap</h2>
 <p><code>snapd</code> is up and running now, so let&#39;s start using it! Here is how you can find any &#34;hello world&#34; kind of snaps in the store:</p>
 <pre>$ snap find hello
-Name             Version Developer   Notes  Summary
-Hello            2.10    canonical   -      GNU Hello, the &#34;hello world&#34; snap
-hello-bluet      0.1     bluet       -      Qt Hello World example
-hello-gabriell   0.1     gabriell    -      Qt Hello World example
-hello-huge       1.0     noise       -      a really big snap
-hello-sergiusens 1.0     sergiusens  -      hello world example
-hello-snap       0.01    muhammad    -      GNU hello-snap, the &#34;Hello, Snap!&#34; snap
-hello-stgraber   2.10    stgraber    -      GNU Hello, the &#34;hello world&#34; snap
-hello-world      6.3     canonical   -      The &#39;hello-world&#39; of snaps</pre>
+hello-node-snap   1.0.2        bhdouglass  -          A simple hello world command
+hello-mdeslaur        2.10         mdeslaur        -          GNU Hello, the &#34;hello world&#34; snap
+hello-snap            0.01         muhammad        -          GNU hello-snap, the &#34;Hello, Snap!&#34; snap
+hello                 2.10         canonical   -          GNU Hello, the &#34;hello world&#34; snap
+hello-world           6.3          canonical   -          The &#39;hello-world&#39; of snaps
+hello-sergiusens  1.0          sergiusens  -          hello world example
+hello-gabriell        0.1          gabriell        -          Qt Hello World example
+hello-bluet           0.1          bluet           -          Qt Hello World example
+so-hello-world        0.2          shadowen        -          the old classic
+hello-huge            1.0          noise           -          a really big snap</pre>
 <p><code>snap find &lt;search terms&gt;</code> will query the store and list the results with their version number, developer names and description.</p>
 <h2>Install and execution</h2>
 <p>As you can see, a number of developers uploaded snaps related to &#34;hello world&#34;. Let&#39;s just install one of them.</p>
 <pre>$ sudo snap install hello
-0 B / 64.00 KB [________________________________________________________________] 0.00 %
 
-Name   Version  Rev  Developer  Notes
-hello  2.10         20   canonical  -</pre>
+hello (stable) 2.10 from &#39;canonical&#39; installed</pre>
 <aside class="special"><p>Note: when you install the first snap, <code>snapd</code> will download the base OS snap (which amounts to some megabytes). Consequently, your first snap download time can take a little bit longer than it will be in the future for any other snap.</p>
 </aside>
 <p>To run the command, simply type hello in the command line (which is a command provided by the <code>hello</code> snap:</p>
@@ -136,9 +135,9 @@ Hello, world!</pre>
 <h2>Check which snaps are installed</h2>
 <p>See the snaps installed on your system with <code>snap list</code>, which will also tell you the software version, the unique revision, the developer of the installed snap, and any optional extra information.</p>
 <pre>$ snap list
-Name          Version               Rev  Developer  Notes
-hello         2.10                  20   canonical  -
-ubuntu-core   16.04+20160531.11-56  122  canonical  -</pre>
+Name                     Version        Rev  Developer   Notes
+hello                    2.10           20   canonical   -
+ubuntu-core              16.04.1        216  canonical   -</pre>
 <p>You will note that the <code>ubuntu-core</code> snap, containing the base snap system is also part of the list. Among other things does it include a newer snapd, which will make sure you will always be up to date).</p>
 <h2>Keeping your system up to date</h2>
 <p>The good news is that snaps are updated automatically in the background every day! If you want, you can still get the latest version of all your snaps manually by running <code>snap refresh</code>. It will bring you completely up to date for all snaps, unless you specify a particular snap to refresh.</p>
@@ -157,8 +156,9 @@ hello 64.75 MB [=====================================&gt;___]   12s
         <h2>Snap can ship one or more commands</h2>
 <p>Our first example was simple and shipped only one command, but in general snap packages can contain more than one command (for example a set of tools shipped in one snap). All commands are then namespaced by the snap package name. Run the steps below to see an example in action:</p>
 <pre>$ sudo snap install hello-world
-Name         Version  Rev  Developer  Notes
-hello-world  6.3      27   canonical  -
+0 B / 20.00 KB [_______________________________________________________] 0.00 %
+
+hello-world (stable) 6.3 from &#39;canonical&#39; installed
 $ hello-world
 Hello World!
 $ hello-world.env
@@ -172,7 +172,7 @@ $ hello-world.env
 <p>Removing a snap is just a command away, all you need to do is run <code>snap remove &lt;snap name&gt;</code>. In our case just do:</p>
 <pre>$ sudo snap remove hello-world
 
-Done</pre>
+hello-world removed</pre>
 <p>Nice and clean, no left-overs. Services will be stopped.</p>
 
 
@@ -184,8 +184,7 @@ Done</pre>
 <h2>Switching channel for installed apps</h2>
 <pre>$ sudo snap refresh hello --channel=beta
 
-Name   Version  Rev  Developer  Notes
-hello  2.10.1   29   canonical     -</pre>
+hello (beta) 2.10.1 from &#39;canonical&#39; upgraded</pre>
 <p>Now, you can run the beta version of the snap and see its output is different:</p>
 <pre>$ hello
 Hello, snap padawan!</pre>
@@ -197,8 +196,7 @@ Hello, snap padawan!</pre>
 <p>One of the features of <code>snapd</code> is to be able to simply roll back to a previous version of an application (including the data associated with the snap) for any reason:</p>
 <pre>$ sudo snap revert hello
 
-Name   Version  Rev  Developer  Notes
-hello  2.10     20   canonical  -
+hello reverted to 2.10
 $ hello
 Hello, world!</pre>
 <p>With this rollback system built-in, you can confidently update knowing that you will always have a way to go back to the previous working state!</p>
