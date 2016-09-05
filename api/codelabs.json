@@ -16,12 +16,32 @@
         "snapcraft",
         "usage"
       ],
-      "updated": "2016-08-08T15:32:40Z",
+      "updated": "2016-09-01T08:37:40Z",
       "url": "creating-first-snap"
     },
     {
+      "source": "1WIC5Tz8W5s6fqTy-M8dX78qUAXO_nGCsiOo4p5aVP6E",
+      "title": "IDF16 Ubuntu Core Workshop",
+      "summary": "In this workshop, you'll learn what Ubuntu Core is, what a snap is and how to use Intel technology to build an IoT solution.",
+      "category": [
+        "snap"
+      ],
+      "difficulty": 2,
+      "duration": 0,
+      "tags": [
+        "idf-2016",
+        "idf16",
+        "intel joule",
+        "snap",
+        "snapcraft",
+        "ubuntu core"
+      ],
+      "updated": "2016-08-17T22:20:07Z",
+      "url": "IDF16-Workshop"
+    },
+    {
       "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
-      "title": "Basic snap usages",
+      "title": "Basic snap usage",
       "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
       "category": [
         "snap"
@@ -34,28 +54,8 @@
         "snap",
         "usage"
       ],
-      "updated": "2016-08-05T14:48:14Z",
+      "updated": "2016-09-01T08:13:38Z",
       "url": "basic-snap-usage"
-    },
-    {
-      "source": "1WIC5Tz8W5s6fqTy-M8dX78qUAXO_nGCsiOo4p5aVP6E",
-      "title": "IDF16 Ubuntu Core Workshop",
-      "summary": "In this workshop, you'll learn what Ubuntu Core is, what a snap is and how to use Intel technology to build an IoT solution.",
-      "category": [
-        "snap"
-      ],
-      "difficulty": 2,
-      "duration": 12,
-      "tags": [
-        "idf-2016",
-        "idf16",
-        "intel gt",
-        "snap",
-        "snapcraft",
-        "ubuntu core"
-      ],
-      "updated": "2016-08-03T14:58:17Z",
-      "url": "IDF16-Workshop"
     }
   ],
   "categories": {
