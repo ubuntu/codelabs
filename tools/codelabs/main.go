@@ -69,6 +69,7 @@ func cmdAdd() {
 
 	args := unique(flag.Args())
 	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "ubuntu-template.html", "-o", codelabPath, "--prefix", "../../..", strings.Join(args, ", "))
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
@@ -228,7 +229,7 @@ func unique(a []string) []string {
 
 func main() {
 	log.SetFlags(0)
-	flag.StringVar(&globalGA, "ga", "UA-81281030-1", "global Google Analytics account")
+	flag.StringVar(&globalGA, "ga", "UA-1018242-64", "global Google Analytics account")
 
 	if len(os.Args) == 1 {
 		fatalf("Need subcommand. Try '-h' for options.")
