@@ -45,7 +45,7 @@
 <li>And more...</li>
 </ul>
 <h3>What you&#39;ll need to do</h3>
-<p>Getting through this codelab won&#39;t be hard, if you have used the command-line before and know how to edit files. If you should ever get stuck along the way, don&#39;t despair, we have posted all the example code at XXX.</p>
+<p>Getting through this codelab won&#39;t be hard, if you have used the command-line before and know how to edit files. If you should ever get stuck along the way, don&#39;t despair, we&#39;ll figure it out.</p>
 <google-codelab-survey survey-id="creating-first-snap-1">
 <h4>How will you use this tutorial?</h4>
 <paper-radio-group>
@@ -77,7 +77,7 @@
     
       <google-codelab-step label="Building a snap is easy" duration="4">
         <h2>Starting the project</h2>
-<p>As we are starting from scratch, the first steps are to create a directory and use a simple template for your snap defintion. In the terminal, just run:</p>
+<p>As we are starting from scratch, the first steps are to create a directory and use a simple template for your snap definition. In the terminal, just run:</p>
 <pre>$ mkdir hello
 $ cd hello
 ~/hello$ snapcraft init
@@ -112,7 +112,7 @@ confinement: devmode</code></pre>
 <h2>Adding a part</h2>
 <p>A snap can consist of multiple parts. Here are a few examples of this:</p>
 <ul>
-<li>Snaps with separate logical parts, e.g. a server snap, which contains a webserver, a database and the application itself or a game which ships the game engine and game data for three different games, each one being defined in its own part.</li>
+<li>Snaps with separate logical parts, e.g. a server snap, which contains a web server, a database and the application itself or a game which ships the game engine and game data for three different games, each one being defined in its own part.</li>
 <li>Snaps with parts which come from different locations.</li>
 <li>Parts which are built in a different way.</li>
 </ul>
@@ -207,7 +207,7 @@ Hello, world!
 share/info/dir</pre>
 <p>What does this mean? Both our <code>gnu-hello</code> and <code>gnu-bash</code> parts want to ship a version of  <code>share/info/dir</code> with differing contents. As this clashes, we have to solve this somehow. In general, there are two options in cases like this:</p>
 <ol type="1" start="1">
-<li>Shipping only one from one of the two parts. If we find the file is not needed or they&#39;re identical, we can tell snapcraft not to ship either using the <code>snap</code> and <code>stage</code> keywords (there is a codelab for this).</li>
+<li>Shipping only one from one of the two parts. If we find the file is not needed or they&#39;re identical, we can tell snapcraft not to ship either using the <code>snap</code> and <code>stage</code> keywords.</li>
 <li>We move one of the files to a different location.</li>
 </ol>
 <p>Luckily the second option is easy to implement and it&#39;s nice being able to ship both. The <code>./configure</code> script of bash comes with an <code>--infodir</code> option, which will set the new location of the info directory. Let&#39;s use <code>/var/bash/info</code>. All you need to do is make your gnu-bash definition look like this:</p>
@@ -368,7 +368,7 @@ edge       ^          ^</pre>
 <p>By now you should successfully have built your first snap, fixed build issues, exposed user commands, learned about uploading snaps to the store and found out about a lot of other useful details (plugins, snapcraft&#39;s help system, release channels in the store, etc.). Snapcraft is easy to use as it is declarative and just uses a few different keywords, so it&#39;s memorisable quite quickly. After using it just a couple of times, it should become second nature to you.</p>
 <h2>Next steps</h2>
 <ul>
-<li>Learn some more advanced techniques on how to use your snap system <a href="https://codelabs.developer.ubuntu.com/?cat=snap" target="_blank">looking for our others codelabs!</a></li>
+<li>Learn some more advanced techniques on how to use your snap system looking for our others codelabs!</li>
 <li>Join the snapcraft.io community by subcribing to <a href="https://lists.snapcraft.io/mailman/listinfo/snapcraft" target="_blank">our mailing list</a>.</li>
 </ul>
 <h2>Further readings</h2>
@@ -388,7 +388,7 @@ edge       ^          ^</pre>
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-81281030-1', 'auto');
+    ga('create', 'UA-1018242-64', 'auto');
 
     (function() {
       var gaCodelab = '';
