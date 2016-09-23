@@ -228,7 +228,7 @@ func unique(a []string) []string {
 
 func main() {
 	log.SetFlags(0)
-	flag.StringVar(&globalGA, "ga", "UA-81281030-1", "global Google Analytics account")
+	flag.StringVar(&globalGA, "ga", "UA-1018242-64", "global Google Analytics account")
 
 	if len(os.Args) == 1 {
 		fatalf("Need subcommand. Try '-h' for options.")
