@@ -69,6 +69,7 @@ func cmdAdd() {
 
 	args := unique(flag.Args())
 	cmd := exec.Command(claatExec, "export", "-ga", globalGA, "-f", "ubuntu-template.html", "-o", codelabPath, "--prefix", "../../..", strings.Join(args, ", "))
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
