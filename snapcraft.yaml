@@ -16,6 +16,16 @@ apps:
     plugs: [network-bind]
         
 parts:
-    snap-codelabs:
-        plugin: dump
-        source: .
+  snap-codelabs:
+    source: .
+    plugin: dump
+    filesets:
+      striptools:
+        - -*.json
+        - -codelabs
+        - -tests/
+        - -tools/
+    stage:
+      - $striptools
+    snap:
+      - $striptools
