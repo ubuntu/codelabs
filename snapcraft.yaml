@@ -1,0 +1,20 @@
+name: snap-codelabs
+version: 1.0
+summary: Ubuntu codelabs offline website
+description: This is our snap and snapcraft codelabs, fetched from google doc content.
+confinement: strict
+grade: stable
+
+apps:
+    snap-codelabs:
+        command: server
+        daemon: simple
+        plugs: [network-bind]
+    codelabs:
+        command: codelabs
+        plugs: [network]
+        
+parts:
+    snap-codelabs:
+        plugin: dump
+        source: .
