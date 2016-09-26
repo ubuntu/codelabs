@@ -10,13 +10,10 @@ grade: stable
 confinement: strict
 
 apps:
-    snap-codelabs:
-        command: server
-        daemon: simple
-        plugs: [network-bind]
-    codelabs:
-        command: codelabs
-        plugs: [network]
+  server:
+    command: server
+    daemon: simple
+    plugs: [network-bind]
         
 parts:
     snap-codelabs:
