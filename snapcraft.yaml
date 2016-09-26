@@ -1,6 +1,6 @@
 name: snap-codelabs
 version: "1.0"
-summary: Ubuntu codelabs offline website for creating snaps.
+summary: Ubuntu codelabs offline website for using and creating snaps.
 description: |
   Codelabs to learn how to use and create snaps. This snap is for an offline
   usage, filtering on snap specific lessons to get your easily started via
