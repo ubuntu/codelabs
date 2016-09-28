@@ -16,7 +16,7 @@
     "iron-selector": "polymerelements/iron-selector#^1.0.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#~1.1.1",
     "polymer": "polymer/polymer#^1.4.0",
-    "codelab-components": "https://github.com/googlecodelabs/codelab-components.git#^1.0.5",
+    "codelab-components": "https://github.com/googlecodelabs/codelab-components.git#^2.0.2",
     "paper-card": "PolymerElements/paper-card",
     "iron-ajax": "^1.4.0",
     "paper-input": "^1.1.15",
