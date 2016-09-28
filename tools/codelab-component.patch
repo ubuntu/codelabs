@@ -1,0 +1,25 @@
+# Workaround some issues with current codelab components making resume not working
+--- bower_components/codelab-components/google-codelab.html	2016-09-28 11:39:55.539253795 +0200
++++ bower_components/codelab-components/google-codelab-patched.html	2016-09-28 11:39:46.839198581 +0200
+@@ -454,13 +454,21 @@ prevent syntax highlighting code blocks,
+         // allow everything render and initialize,
+         // especially this.steps which runs at the same init level
+         // as iron-localstorage (on attached).
++
++        // save the stepIndex which is changed afterwards in _selectedChanged when this.steps is restored
++        // this makes the resume functionality not triggered
++        let stepindex = this.state.stepIndex;
+         this.async(function() {
++          this.state.stepIndex = stepindex;
+           this._storedStep = this.steps[this.state.stepIndex];
+           // resume dialog is shown only when all 3 conditions hold:
+           // 1. user has already visited the codelab in the past
+           // 2. has made at least 1 step
+           // 3. user is landed on the first step
+           if (this.selected === 0 && this.state.stepIndex > 0) {
++            // Fix stacking issue when background drop are set as first element (due to our outter iron-overlay
++            // creating a new layer)
++            document.body.appendChild(this.$.resumeDialog);
+             this.$.resumeDialog.open();
+           }
+         }, 500);
