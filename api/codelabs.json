@@ -2,7 +2,7 @@
   "codelabs": [
     {
       "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
-      "title": "Creating your first snap",
+      "title": "Create your first snap",
       "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
       "category": [
         "snapcraft"
@@ -16,8 +16,8 @@
         "snapcraft",
         "usage"
       ],
-      "updated": "2016-09-12T14:16:32Z",
-      "url": "creating-first-snap"
+      "updated": "2016-11-09T14:09:57Z",
+      "url": "create-first-snap"
     },
     {
       "source": "1WIC5Tz8W5s6fqTy-M8dX78qUAXO_nGCsiOo4p5aVP6E",
