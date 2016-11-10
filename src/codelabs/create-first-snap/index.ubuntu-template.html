@@ -90,12 +90,16 @@ Edit the file to your liking or run `snapcraft` to get started</pre>
 <p>snapcraft created a simple <code>snapcraft.yaml</code> file, in which you declare how the snap is built and which properties it exposes to the user. We will obviously need to tweak a bit for the snap we want to build.</p>
 <h2>Describing the snap</h2>
 <p>Let&#39;s take a look at the top part of your snapcraft.yaml file. It should look somewhat as shown below:</p>
-<pre><code>name: my-snap  # the name of the snap
-version: 0  # the version of the snap
-summary: This is my-snap&#39;s summary  # 79 char long summary
-description: This is my-snap&#39;s description  # a longer description for the snap
+<pre><code>name: my-snap-name # you probably want to &#39;snapcraft register &lt;name&gt;&#39;
+version: &#39;0.1&#39; # just for humans, typically &#39;1.2+git&#39; or &#39;1.3.2&#39;
+summary: Single-line elevator pitch for your amazing snap # 79 char long summary
+description: |
+  This is my-snap&#39;s description. You have a paragraph or two to tell the
+  most important story about your snap. Keep it under 100 words though,
+  we live in tweetspace and your description wants to look good in the snap
+  store.
 grade: devel # must be &#39;stable&#39; to release into candidate/stable channels
-confinement: devmode  # use &#34;strict&#34; to enforce system access only via declared interfaces</code></pre>
+confinement: devmode # use &#39;strict&#39; once you have the right plugs and slots</code></pre>
 <p>This part of <code>snapcraft.yaml</code> is mandatory and describes the very basics of the snap metadata. Let&#39;s go through this line by line:</p>
 <ul>
 <li>name describes the name of the snap.</li>
@@ -286,10 +290,7 @@ Skipping stage gnu-hello (already ran)
 Skipping prime gnu-bash (already ran)
 Skipping prime gnu-hello (already ran)
 Snapping &#39;hello&#39; - 
-Snapped hello_2.10_amd64.snap
-~/hello$ sudo snap install hello_2.10_amd64.snap
-
-hello 2.10 installed</pre>
+Snapped hello_2.10_amd64.snap</pre>
 <p>Let&#39;s try to install it!</p>
 <pre>~/hello$ sudo snap install hello_2.10_amd64.snap
 error: cannot find signatures with metadata for snap &#34;hello_2.10_amd64.snap&#34;</pre>
