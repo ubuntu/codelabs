@@ -2,6 +2,9 @@ bower_components
 dist
 node_modules
 build
+parts/
+stage/
+prime/
 *.snap
 
 api/
