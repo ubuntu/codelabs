@@ -16,7 +16,7 @@
         "snapcraft",
         "usage"
       ],
-      "updated": "2016-11-09T14:09:57Z",
+      "updated": "2016-12-01T09:05:21Z",
       "url": "create-first-snap"
     },
     {
@@ -34,7 +34,7 @@
         "snap",
         "usage"
       ],
-      "updated": "2016-11-09T13:00:06Z",
+      "updated": "2016-11-22T09:24:13Z",
       "url": "basic-snap-usage"
     }
   ],

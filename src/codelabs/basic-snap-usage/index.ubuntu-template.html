@@ -74,7 +74,10 @@
 <p><img style="max-width: 500.00px" src="img/f9f287c2e1980df1.png"></p>
 <h2>Different distributions:</h2>
 <h3>Arch</h3>
-<pre>$ sudo pacman -S snapd</pre>
+<pre>$ sudo pacman -S snapd
+
+# enable the snapd systemd service:
+sudo systemctl enable --now snapd.socket</pre>
 <h3>Debian (Sid only)</h3>
 <pre>$ sudo apt install snapd</pre>
 <h3>Fedora</h3>
@@ -89,12 +92,14 @@ $ sudo setenforce 0
 
 # to persist, edit /etc/selinux/config to set SELINUX=permissive and reboot.</pre>
 <h3>Gentoo</h3>
-<p>Install <a href="https://github.com/zyga/snap-confine-gentoo" target="_blank">snap-confine.ebuild</a> and <a href="https://github.com/zyga/snapd-gentoo" target="_blank">snapd.ebuild</a>.</p>
-<pre># enable the snapd systemd service:
-$ sudo systemctl enable –now snapd.service</pre>
+<p>Install the<a href="https://github.com/zyga/gentoo-snappy" target="_blank">gentoo-snappy overlay</a>.</p>
+<h3>OpenEmbedded/Yocto</h3>
+<p>Install the<a href="https://github.com/morphis/meta-snappy/blob/master/README.md" target="_blank">snap meta layer</a>.</p>
 <h3>openSuSE</h3>
 <pre>$ sudo zypper addrepo http://download.opensuse.org/repositories/system:/snappy/openSUSE_Leap_42.2/ snappy
 $ sudo zypper install snapd</pre>
+<h3>OpenWrt</h3>
+<p>Enable the<a href="https://github.com/teknoraver/snap-openwrt/blob/master/README.md" target="_blank">snap-openwrt feed</a>.</p>
 <h3>Ubuntu</h3>
 <p>You should already be all set on ubuntu 16.04 LTS desktop, just in case run:</p>
 <pre>$ sudo apt install snapd</pre>
@@ -137,7 +142,7 @@ Hello, world!</pre>
 <pre>$ snap list
 Name                     Version        Rev  Developer   Notes
 hello                    2.10           20   canonical   -
-ubuntu-core              16.04.1        352  canonical   -</pre>
+ubuntu-core              16.04.1        423  canonical   -</pre>
 <p>You will note that the <code>ubuntu-core</code> snap, containing the base snap system is also part of the list. Among other things does it include a newer snapd, which will make sure you will always be up to date).</p>
 <h2>Keeping your system up to date</h2>
 <p>The good news is that snaps are updated automatically in the background every day! If you want, you can still get the latest version of all your snaps manually by running <code>snap refresh</code>. It will bring you completely up to date for all snaps, unless you specify a particular snap to refresh.</p>

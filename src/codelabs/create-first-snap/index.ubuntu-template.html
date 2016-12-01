@@ -148,10 +148,17 @@ Snapped hello_2.10_amd64.snap</pre>
 hello 2.10 installed
 ~/hello$ snap list
 Name             Version                           Rev  Developer   Notes
-hello               2.10                                x1                         devmode
-ubuntu-core              16.04.1        352  canonical   -</pre>
+hello            2.10                              x1               devmode
+ubuntu-core      16.04.1                           352  canonical   -</pre>
 <p>Using <code>--devmode</code> is generally a good idea, as it&#39;s best-practice when creating new snaps. When developing, security requirements can get in our way in the beginning. It&#39;s better to focus on getting the application ready first. This way you focus on the build first, get a snap working quickly and can think about things like confinement in a later step.</p>
 <p>Ok, let&#39;s try to execute it and type <code>hello</code> to get it working:</p>
+<p>On ubuntu desktop, you will get:</p>
+<pre>~/hello$ hello
+The program &#39;hello&#39; can be found in the following packages:
+ * hello
+ * hello-traditional
+Try: sudo apt install &lt;selected package&gt;</pre>
+<p>On ubuntu core:</p>
 <pre>~/hello$ hello
 hello: command not found</pre>
 <p>The command doesn&#39;t exist despite being part of our snap and installed! Indeed, snaps don&#39;t expose anything to the user by default (command, services...). We have to do this explicitly and that&#39;s exactly what you are going to tackle in the next step!</p>
@@ -402,12 +409,14 @@ edge       ^          ^</pre>
 <p>By now you should successfully have built your first snap, fixed build issues, exposed user commands, learned about uploading snaps to the store and found out about a lot of other useful details (plugins, snapcraft&#39;s help system, release channels in the store, etc.). Snapcraft is easy to use as it is declarative and just uses a few different keywords, so it&#39;s memorisable quite quickly. After using it just a couple of times, it should become second nature to you.</p>
 <h2>Next steps</h2>
 <ul>
+<li>You can have a look at build a nodejs service which is the logical follow up of that codelab, bringing your some debugging techniques, more information on confinement and how to package some snap application as a service.</li>
 <li>Learn some more advanced techniques on how to use your snap system looking for our others codelabs!</li>
 <li>Join the snapcraft.io community by subcribing to <a href="https://lists.snapcraft.io/mailman/listinfo/snapcraft" target="_blank">our mailing list</a>.</li>
 </ul>
 <h2>Further readings</h2>
 <ul>
 <li><a href="http://snapcraft.io/docs/" target="_blank">Snapcraft.io documentation</a> is a good place to start reading the whole snap and snapcraft documentation.</li>
+<li><a href="http://snapcraft.io/docs/build-snaps/syntax" target="_blank">Snapcraft syntax reference</a>, covering various available options like the daemon ones.</li>
 <li>Check how you can <a href="http://snapcraft.io/community/" target="_blank">contact us and the broader community</a>.</li>
 </ul>
 
