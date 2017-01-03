@@ -314,7 +314,7 @@ Slot                              Plug
 :upower-observe                   -
 :x11                              -</pre>
 <p>This list of interfaces evolves over time. It also depends on your hardware capability (the gadget snap, to be precise), which defines which additional interfaces your device can expose, like GPIO devices, camera, I2C and such...</p>
-<p>You have the confirmation here that snappy-debug connects to the log-obverse slot from the core snap (slots and plugs name are abbreviated when they match).</p>
+<p>You have the confirmation here that snappy-debug connects to the log-observe slot from the core snap (slots and plugs name are abbreviated when they match).</p>
 <p>So, let&#39;s think about a web server. What do we want to do? We want to listen on a port and return requests. This is named binding to a port. <code>network-bind</code> seems to be a good candidate for this.</p>
 <p>Let&#39;s try to add this in our <code>snapcraft.yaml</code> definition. We will thus declare a plug, connecting to <code>network-bind</code> interface.</p>
 <p>We won&#39;t enter into detail of plugs and slots here, but the names can be overridden. Just note that we are using here the simplified definition where plug name == interface name.</p>
