@@ -71,6 +71,17 @@
         <p>If you are on Ubuntu 16.04 LTS or Ubuntu 16.10, getting all the required tools is very easy. </p>
 <aside class="special"><p>Note: other GNU/Linux distributions are currently in the process of building packages for snapcraft.</p>
 </aside>
+<h2>If you are running ubuntu core</h2>
+<p>Ubuntu Core isn&#39;t a traditional Linux distribution: there is no &#34;apt&#34;, the system is read-only. How can you develop and build snap in such an environment then? We have a special snap for this!</p>
+<p>Enter the &#34;classic&#34; snap. This snap will get you into a lxc container, where you have a traditional Ubuntu distribution. You can there installing more packages, change files projects and run snapcraft to build your snap. The home directory is shared between the container and ubuntu core. You can thus build a snap, then, outside of the classic snap, install and test it.</p>
+<p>To install the classic snap, just type:</p>
+<pre>$ sudo snap install classic --edge --devmode</pre>
+<p>Every time you want to install packages, build a snap and so on, just enter it:</p>
+<pre>$ sudo classic
+(classic)foo@localhost:~$</pre>
+<p>You will note that the shell is prepended with <code>(classic)</code> to remind you that you are running those commands inside the classic snap. You can exit the shell classically by typing <code>exit</code>.</p>
+<p>You can now run the commands and build a snap as if you were on a classic system (we won&#39;t remind you about that in the following and others codelabs. Just remember that when you run the &#34;snap&#34; (and not snapcraft) command to interact or install a snap, you need to be outside of this classic snap (you can open a second ssh connexion for instance).</p>
+<h2>Installing dependencies</h2>
 <p>Now simply run:</p>
 <pre>$ sudo apt install snapcraft build-essential</pre>
 <p>This will install snapcraft and some additional build tools we are going to need for our specific example. As snapcraft uses a plugin architecture (to let you build snaps from all kinds of projects), some required build tools need to be installed separately. In our case, that&#39;s <code>build-essential</code>.</p>
@@ -142,7 +153,6 @@ Staging gnu-hello
 Priming gnu-hello
 Snapping &#39;hello&#39; |                                                   
 Snapped hello_2.10_amd64.snap</pre>
-<p>You just built your first snap! Congratulations! Let&#39;s install it now.</p>
 <pre>~/hello$ sudo snap install --devmode hello_2.10_amd64.snap
 
 hello 2.10 installed
@@ -150,6 +160,7 @@ hello 2.10 installed
 Name             Version                           Rev  Developer   Notes
 hello            2.10                              x1               devmode
 ubuntu-core      16.04.1                           352  canonical   -</pre>
+<p>You just built your first snap! Congratulations! Let&#39;s install it now.</p>
 <p>Using <code>--devmode</code> is generally a good idea, as it&#39;s best-practice when creating new snaps. When developing, security requirements can get in our way in the beginning. It&#39;s better to focus on getting the application ready first. This way you focus on the build first, get a snap working quickly and can think about things like confinement in a later step.</p>
 <p>Ok, let&#39;s try to execute it and type <code>hello</code> to get it working:</p>
 <p>On ubuntu desktop, you will get:</p>
