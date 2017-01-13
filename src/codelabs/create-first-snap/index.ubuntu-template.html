@@ -72,7 +72,7 @@
 <aside class="special"><p>Note: other GNU/Linux distributions are currently in the process of building packages for snapcraft.</p>
 </aside>
 <h2>If you are running ubuntu core</h2>
-<p>Ubuntu Core isn&#39;t a traditional Linux distribution: there is no &#34;apt&#34;, the system is read-only. How can you develop and build snap in such an environment then? We have a special snap for this!</p>
+<p>Ubuntu Core is not a traditional Linux distribution: there is no &#34;apt&#34;, the system is read-only. How can you develop and build snap in such an environment then? We have a special snap for this!</p>
 <p>Enter the &#34;classic&#34; snap. This snap will get you into a lxc container, where you have a traditional Ubuntu distribution. You can there installing more packages, change files projects and run snapcraft to build your snap. The home directory is shared between the container and ubuntu core. You can thus build a snap, then, outside of the classic snap, install and test it.</p>
 <p>To install the classic snap, just type:</p>
 <pre>$ sudo snap install classic --edge --devmode</pre>
@@ -146,21 +146,22 @@ confinement: devmode</code></pre>
         source: http://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz
         plugin: autotools</code></pre>
 <p>In the list of parts, we add simply one called <code>gnu-hello</code> (the part name can take whatever identifier you like). As source we simply use a tarball from the GNU project&#39;s ftp server - snapcraft will download and extract it automatically. As plugin you pick autotools which uses the pretty common <code>./configure &amp;&amp; make &amp;&amp; make install</code> steps to build the part under the hood.</p>
-<p>Now on to the exciting part: let&#39;s build it! All you need to do here is:</p>
+<p>Now to the exciting part: let&#39;s build it! All you need to do here is:</p>
 <pre>~/hello$ snapcraft
 [...]
 Staging gnu-hello
 Priming gnu-hello
 Snapping &#39;hello&#39; |                                                   
 Snapped hello_2.10_amd64.snap</pre>
-<pre>~/hello$ sudo snap install --devmode hello_2.10_amd64.snap
+<p>If your system does not have installed some dependencies such as &#34;autopoint&#34; and &#34;libtool&#34; needed for this example, snapcraft will prompt for the system password to install them. </p>
+<p>You just built your first snap! Congratulations! Let&#39;s install it now.</p>
+<pre>~/hello$ sudo snap install hello_2.10_amd64.snap --devmode 
 
 hello 2.10 installed
 ~/hello$ snap list
 Name             Version                           Rev  Developer   Notes
 hello            2.10                              x1               devmode
 ubuntu-core      16.04.1                           352  canonical   -</pre>
-<p>You just built your first snap! Congratulations! Let&#39;s install it now.</p>
 <p>Using <code>--devmode</code> is generally a good idea, as it&#39;s best-practice when creating new snaps. When developing, security requirements can get in our way in the beginning. It&#39;s better to focus on getting the application ready first. This way you focus on the build first, get a snap working quickly and can think about things like confinement in a later step.</p>
 <p>Ok, let&#39;s try to execute it and type <code>hello</code> to get it working:</p>
 <p>On ubuntu desktop, you will get:</p>
@@ -339,9 +340,11 @@ bash-4.3$ exit</pre>
 <h2>Registering an account</h2>
 <p>Open My Apps in your browser and follow the instructions to register an account:</p>
 <p><img style="max-width: 624.00px" src="img/d5592c70e3d136ed.png"></p>
+<p>Select &#34;I am a new Ubuntu One user&#34; and complete the needed data.</p>
 <p><img style="max-width: 624.00px" src="img/1c7822a6487fd2f3.png"></p>
 <p>Enter your email address, name and password, accept the terms of service and create the account. Remember as well to choose a namespace on myapps before registering your snap.</p>
 <p>It&#39;s then time for you to get authenticated from snapcraft:</p>
+<p>If it is your first time you will get a message to enable multifactor authentication and agree with the developer terms and conditions.</p>
 <pre>~/hello$ snapcraft login
 Enter your Ubuntu One SSO credentials.
 Email: myemail@provider.com
