@@ -75,6 +75,26 @@
       ],
       "updated": "2017-01-12T10:20:47Z",
       "url": "create-first-snap"
+    },
+    {
+      "source": "172iM3jTkg2os8HgqtSpVug3IR5pjqS2zz607hTi3KVg",
+      "title": "Create your own Core image",
+      "summary": "Create your own Ubuntu Core image for a particular model, by assembling snaps available in the store. Make your own device image with some snap preinstalled or additional functionalities!",
+      "category": [
+        "snap"
+      ],
+      "difficulty": 3,
+      "duration": 18,
+      "tags": [
+        "assertion",
+        "device",
+        "image",
+        "model",
+        "snap",
+        "ubuntu-image"
+      ],
+      "updated": "2017-01-12T10:34:38Z",
+      "url": "create-your-own-core-image"
     }
   ],
   "categories": {
