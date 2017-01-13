@@ -1,24 +1,6 @@
 {
   "codelabs": [
     {
-      "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
-      "title": "Basic snap usage",
-      "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
-      "category": [
-        "snap"
-      ],
-      "difficulty": 1,
-      "duration": 10,
-      "tags": [
-        "beginner",
-        "idf-2016",
-        "snap",
-        "usage"
-      ],
-      "updated": "2017-01-13T10:57:07Z",
-      "url": "basic-snap-usage"
-    },
-    {
       "source": "1HQ98mq-OAlqrgmVUhOF84lYsNGdIf0jkZIC2JkmMS00",
       "title": "Using Intel Realsense SDK",
       "summary": "We are going to illustrate how to build some Intel Realsense SDK samples on an ubuntu desktop. You will be able to hook up on your Intel Joule and build the samples, explore some of the code and try them!",
@@ -35,6 +17,63 @@
       ],
       "updated": "2017-01-12T13:07:22Z",
       "url": "using-intel-realsense-sdk"
+    },
+    {
+      "source": "172iM3jTkg2os8HgqtSpVug3IR5pjqS2zz607hTi3KVg",
+      "title": "Create your own Core image",
+      "summary": "Create your own Ubuntu Core image for a particular model, by assembling snaps available in the store. Make your own device image with some snap preinstalled or additional functionalities!",
+      "category": [
+        "snap"
+      ],
+      "difficulty": 3,
+      "duration": 18,
+      "tags": [
+        "assertion",
+        "device",
+        "image",
+        "model",
+        "snap",
+        "ubuntu-image"
+      ],
+      "updated": "2017-01-13T12:11:15Z",
+      "url": "create-your-own-core-image"
+    },
+    {
+      "source": "1r--iLBwfCyBp8ZUfNSYrykve87BvLqwX58WBXN7ZcaM",
+      "title": "Setup Intel Joule",
+      "summary": "In this codelab, we are going to setup Ubutu Core on your Intel flash. We'll flash the sd card with an Ubuntu Core image and then configure it.",
+      "category": [
+        "snap"
+      ],
+      "difficulty": 1,
+      "duration": 35,
+      "tags": [
+        "beginner",
+        "console-conf",
+        "joule",
+        "snap",
+        "usage"
+      ],
+      "updated": "2017-01-12T13:09:21Z",
+      "url": "setup-ubuntu-core-intel-joule"
+    },
+    {
+      "source": "10jai4vAduTxF0RQMUs-pqIRbMM9TXv9dgxjNDGkxduo",
+      "title": "Basic snap usage",
+      "summary": "In this codelab, we are going to cover the very basic on how to use snaps on your distributions, and the main benefits from them.",
+      "category": [
+        "snap"
+      ],
+      "difficulty": 1,
+      "duration": 10,
+      "tags": [
+        "beginner",
+        "idf-2016",
+        "snap",
+        "usage"
+      ],
+      "updated": "2017-01-13T10:57:07Z",
+      "url": "basic-snap-usage"
     },
     {
       "source": "1wV7rM478gBEidlNVh724gIgx9KiVgKdfITEzpBEmUmQ",
@@ -58,45 +97,6 @@
       "url": "build-a-nodejs-service"
     },
     {
-      "source": "172iM3jTkg2os8HgqtSpVug3IR5pjqS2zz607hTi3KVg",
-      "title": "Create your own Core image",
-      "summary": "Create your own Ubuntu Core image for a particular model, by assembling snaps available in the store. Make your own device image with some snap preinstalled or additional functionalities!",
-      "category": [
-        "snap"
-      ],
-      "difficulty": 3,
-      "duration": 18,
-      "tags": [
-        "assertion",
-        "device",
-        "image",
-        "model",
-        "snap",
-        "ubuntu-image"
-      ],
-      "updated": "2017-01-12T10:34:38Z",
-      "url": "create-your-own-core-image"
-    },
-    {
-      "source": "1r--iLBwfCyBp8ZUfNSYrykve87BvLqwX58WBXN7ZcaM",
-      "title": "Setup Intel Joule",
-      "summary": "In this codelab, we are going to setup Ubutu Core on your Intel flash. We'll flash the sd card with an Ubuntu Core image and then configure it.",
-      "category": [
-        "snap"
-      ],
-      "difficulty": 1,
-      "duration": 35,
-      "tags": [
-        "beginner",
-        "console-conf",
-        "joule",
-        "snap",
-        "usage"
-      ],
-      "updated": "2017-01-12T13:09:21Z",
-      "url": "setup-ubuntu-core-intel-joule"
-    },
-    {
       "source": "1hA-ytZZjTxajh8vIIpV6MUE03poBjdJizDQVUBgurhM",
       "title": "Create your first snap",
       "summary": "We are going to use snapcraft to walk you through the creation of your first snap and main snapcraft concepts.",
@@ -112,7 +112,7 @@
         "snapcraft",
         "usage"
       ],
-      "updated": "2017-01-13T10:55:59Z",
+      "updated": "2017-01-13T12:09:55Z",
       "url": "create-first-snap"
     }
   ],
